@@ -14,10 +14,10 @@ For more information, <a href="https://www.millisecond.com/">click here for the 
 <b>Included Files:</b>
 All relevant files are available to download for free from this GitHub repository. To run the Selective Interrogation Assessment task you will need the following 2 files, ensuring both files are saved in the same location, and the file names are not changed.
 <br><br>
-(1) Selective Interrogation Task.iqx
+(1) <b>Selective Interrogation Task.iqx</b>
 <br>
-(2) Grid Partition.jpg
+(2) <b>Grid Partition.jpg</b>
 <br><br>
-Additionally, a <b>User Manual</b> file is provided, containing information concerning Experimental Stimuli, the Task Procedure, Score Computation, and Data Files.
+Additionally, the <b>User Manual.pdf</b> file contains information concerning Experimental Stimuli, the Task Procedure, Score Computation, and Data Files.
 <br><br>
 <b>Contact Information:</b> For additional information, assistance with modifying the template code, and the original Selective Interrogation Assessment Task stimuli set, please contact script author, Amelia Reynolds at <a href="mailto:amelia.reynolds@research.uwa.edu.au">amelia.reynolds@research.uwa.edu.au</a>.

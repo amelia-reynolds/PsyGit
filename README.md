@@ -1,7 +1,7 @@
 <b>Selective Interrogation Assessment Task Information</b>
 <br><br>
 <b>Task Citation:</b>
-Reynolds, A., MacLeod, C., & Grafton, B. (in press). The role of expectancies and selective interrogation of information in trait anxiety-linked affect when approaching potentially stressful future events.
+Reynolds, A., MacLeod, C., & Grafton, B. (in press). The role of expectancies and selective interrogation of information in trait anxiety-linked affect when approaching potentially stressful future events. Retrieved from <a href="https://osf.io/preprints/psyarxiv/t6gn7">osf.io/preprints/psyarxiv/t6gn7</a>
 <br><br>
 <b>Task Description:</b>This is an editable version of the Selective Interrogation Assessment Task developed by Reynolds et al. (under review). This task assesses selective interrogation of information, that is, 
 the information an individual volitionally accesses from a pool of available information. The task permits computation indices representing the relative proportions of different categories 

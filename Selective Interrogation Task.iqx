@@ -1,12 +1,12 @@
-﻿================================================================================================
+================================================================================================
 
                              Selective Interrogation Assessment Task
 
 ================================================================================================
                                                                 
   Script Author: Amelia Reynolds (amelia.reynolds@research.uwa.edu.au)
-  Data: 11-24-2023 
-  Last Updated: 11-24-2023
+  Date Created: 11-24-2023 
+  Last Updated: 13-03-2024
 	  
   Task Information .............................................................................
 		 
@@ -54,14 +54,14 @@
 	  Content Stimuli Pool ............................................................ 299
 	  Selected Stimuli ................................................................ 394
 	
-	Experimental Task ................................................................. 827
-	  Instructions & Reminders ........................................................ 831
-	  Task Screens .................................................................... 889
-	  Selective Interrogation Task .................................................... 1203
+	Experimental Task ................................................................. 907
+	  Instructions & Reminders ........................................................ 911
+	  Task Screens .................................................................... 969
+	  Selective Interrogation Task .................................................... 1283
   
-    Data Files ........................................................................ 1374
-	  Raw Data ........................................................................ 1378
-	  Summary Data .................................................................... 1412
+    Data Files ........................................................................ 1454
+	  Raw Data ........................................................................ 1460
+	  Summary Data .................................................................... 1494
   
   
   Note: This directory reflect the code line numbers of the template script. If the template
@@ -323,30 +323,30 @@
 		   "contentcategory1_6",
 		   "contentcategory1_7",
 		   "contentcategory1_8",
-		   "This is an example Content stimulus.",
-		   "This is an example Content stimulus.",
-		   "This is an example Content stimulus.",
-		   "This is an example Content stimulus.",
-		   "This is an example Content stimulus.",
-		   "This is an example Content stimulus.",
-		   "This is an example Content stimulus.",
-		   "This is an example Content stimulus.",
-		   "This is an example Content stimulus.",
-		   "This is an example Content stimulus.",
-		   "This is an example Content stimulus.",
-		   "This is an example Content stimulus.",
-		   "This is an example Content stimulus.",
-		   "This is an example Content stimulus.",
-		   "This is an example Content stimulus.",
-		   "This is an example Content stimulus.",
-		   "This is an example Content stimulus.",
-		   "This is an example Content stimulus.",
-		   "This is an example Content stimulus.",
-		   "This is an example Content stimulus.",
-		   "This is an example Content stimulus.",
-		   "This is an example Content stimulus.",
-		   "This is an example Content stimulus.",
-		   "This is an example Content stimulus.")
+		   "contentcategory1_9",
+		   "contentcategory1_10",
+		   "contentcategory1_11",
+		   "contentcategory1_12",
+		   "contentcategory1_13",
+		   "contentcategory1_14",
+		   "contentcategory1_15",
+		   "contentcategory1_16",
+		   "contentcategory1_17",
+		   "contentcategory1_18",
+		   "contentcategory1_19",
+		   "contentcategory1_20",
+		   "contentcategory1_21",
+		   "contentcategory1_22",
+		   "contentcategory1_23",
+		   "contentcategory1_24",
+		   "contentcategory1_25",
+		   "contentcategory1_26",
+		   "contentcategory1_27",
+		   "contentcategory1_28",
+		   "contentcategory1_29",
+		   "contentcategory1_30",
+		   "contentcategory1_31",
+		   "contentcategory1_32")
 / selectionmode = list.labelcategory1.currentindex
 / selectionrate = always
 </list>
@@ -354,39 +354,39 @@
     Category 2 Content
 
 <list contentcategory2>
-/ items = ("This is an example Content stimulus.",
-		   "This is an example Content stimulus.",
-		   "This is an example Content stimulus.",
-		   "This is an example Content stimulus.",
-		   "This is an example Content stimulus.",
-		   "This is an example Content stimulus.",
-		   "This is an example Content stimulus.",
-		   "This is an example Content stimulus.",
-		   "This is an example Content stimulus.",
-		   "This is an example Content stimulus.",
-		   "This is an example Content stimulus.",
-		   "This is an example Content stimulus.",
-		   "This is an example Content stimulus.",
-		   "This is an example Content stimulus.",
-		   "This is an example Content stimulus.",
-		   "This is an example Content stimulus.",
-		   "This is an example Content stimulus.",
-		   "This is an example Content stimulus.",
-		   "This is an example Content stimulus.",
-		   "This is an example Content stimulus.",
-		   "This is an example Content stimulus.",
-		   "This is an example Content stimulus.",
-		   "This is an example Content stimulus.",
-		   "This is an example Content stimulus.",
-		   "This is an example Content stimulus.",
-		   "This is an example Content stimulus.",
-		   "This is an example Content stimulus.",
-		   "This is an example Content stimulus.",
-		   "This is an example Content stimulus.",
-		   "This is an example Content stimulus.",
-		   "This is an example Content stimulus.",
-		   "This is an example Content stimulus.")
-/ selectionmode = list.labelcategory1.currentindex
+/ items = ("contentcategory2_1",
+           "contentcategory2_2",
+		   "contentcategory2_3",
+		   "contentcategory2_4",
+		   "contentcategory2_5",
+		   "contentcategory2_6",
+		   "contentcategory2_7",
+		   "contentcategory2_8",
+		   "contentcategory2_9",
+		   "contentcategory2_10",
+		   "contentcategory2_11",
+		   "contentcategory2_12",
+		   "contentcategory2_13",
+		   "contentcategory2_14",
+		   "contentcategory2_15",
+		   "contentcategory2_16",
+		   "contentcategory2_17",
+		   "contentcategory2_18",
+		   "contentcategory2_19",
+		   "contentcategory2_20",
+		   "contentcategory2_21",
+		   "contentcategory2_22",
+		   "contentcategory2_23",
+		   "contentcategory2_24",
+		   "contentcategory2_25",
+		   "contentcategory2_26",
+		   "contentcategory2_27",
+		   "contentcategory2_28",
+		   "contentcategory2_29",
+		   "contentcategory2_30",
+		   "contentcategory2_31",
+		   "contentcategory2_32")
+/ selectionmode = list.labelcategory2.currentindex
 / selectionrate = always
 </list>
 
@@ -487,10 +487,10 @@
 </list>
 
 <list positiony>
-/ items = (20%, 40%, 60%, 80%,
-           20%, 40%, 60%, 80%,
-		   20%, 40%, 60%, 80%,
-		   20%, 40%, 60%, 80%)
+/ items = (22%, 43%, 64%, 85%,
+           22%, 43%, 64%, 85%,
+		   22%, 43%, 64%, 85%,
+		   22%, 43%, 64%, 85%)
 / selectionmode = list.positionx.currentindex
 / selectionrate = always
 </list>
@@ -572,128 +572,176 @@
 / items = ("<%values.label1_1%>")
 / hposition = values.label1_1_Xposition
 / vposition = values.label1_1_Yposition
-/ fontstyle = ("Arial", 2.34%, false, false, false, false, 5, 1)
+/ halign = center
+/ valign = center
+/ fontstyle = ("Arial", 2%, false, false, false, false, 5, 1)
 / txcolor = (values.label1_1_R, values.label1_1_G, values.label1_1_B)
+/ size = (10%, 10%)
 </text>
 
 <text label1_2>
 / items = ("<%values.label1_2%>")
 / hposition = values.label1_2_Xposition
 / vposition = values.label1_2_Yposition
-/ fontstyle = ("Arial", 2.34%, false, false, false, false, 5, 1)
+/ halign = center
+/ valign = center
+/ fontstyle = ("Arial", 2%, false, false, false, false, 5, 1)
 / txcolor = (values.label1_2_R, values.label1_2_G, values.label1_2_B)
+/ size = (10%, 10%)
 </text>
 
 <text label1_3>
 / items = ("<%values.label1_3%>")
 / hposition = values.label1_3_Xposition
 / vposition = values.label1_3_Yposition
-/ fontstyle = ("Arial", 2.34%, false, false, false, false, 5, 1)
+/ halign = center
+/ valign = center
+/ fontstyle = ("Arial", 2%, false, false, false, false, 5, 1)
 / txcolor = (values.label1_3_R, values.label1_3_G, values.label1_3_B)
+/ size = (10%, 10%)
 </text>
 
 <text label1_4>
 / items = ("<%values.label1_4%>")
 / hposition = values.label1_4_Xposition
 / vposition = values.label1_4_Yposition
-/ fontstyle = ("Arial", 2.34%, false, false, false, false, 5, 1)
+/ halign = center
+/ valign = center
+/ fontstyle = ("Arial", 2%, false, false, false, false, 5, 1)
 / txcolor = (values.label1_4_R, values.label1_4_G, values.label1_4_B)
+/ size = (10%, 10%)
 </text>
 
 <text label1_5>
 / items = ("<%values.label1_5%>")
 / hposition = values.label1_5_Xposition
 / vposition = values.label1_5_Yposition
-/ fontstyle = ("Arial", 2.34%, false, false, false, false, 5, 1)
+/ halign = center
+/ valign = center
+/ fontstyle = ("Arial", 2%, false, false, false, false, 5, 1)
 / txcolor = (values.label1_5_R, values.label1_5_G, values.label1_5_B)
+/ size = (10%, 10%)
 </text>
 
 <text label1_6>
 / items = ("<%values.label1_6%>")
 / hposition = values.label1_6_Xposition
 / vposition = values.label1_6_Yposition
-/ fontstyle = ("Arial", 2.34%, false, false, false, false, 5, 1)
+/ halign = center
+/ valign = center
+/ fontstyle = ("Arial", 2%, false, false, false, false, 5, 1)
 / txcolor = (values.label1_6_R, values.label1_6_G, values.label1_6_B)
+/ size = (10%, 10%)
 </text>
 
 <text label1_7>
 / items = ("<%values.label1_7%>")
 / hposition = values.label1_7_Xposition
 / vposition = values.label1_7_Yposition
-/ fontstyle = ("Arial", 2.34%, false, false, false, false, 5, 1)
+/ halign = center
+/ valign = center
+/ fontstyle = ("Arial", 2%, false, false, false, false, 5, 1)
 / txcolor = (values.label1_7_R, values.label1_7_G, values.label1_7_B)
+/ size = (10%, 10%)
 </text>
 
 <text label1_8>
 / items = ("<%values.label1_8%>")
 / hposition = values.label1_8_Xposition
 / vposition = values.label1_8_Yposition
-/ fontstyle = ("Arial", 2.34%, false, false, false, false, 5, 1)
+/ halign = center
+/ valign = center
+/ fontstyle = ("Arial", 2%, false, false, false, false, 5, 1)
 / txcolor = (values.label1_8_R, values.label1_8_G, values.label1_8_B)
+/ size = (10%, 10%)
 </text>
 
 <text label2_1>
 / items = ("<%values.label2_1%>")
 / hposition = values.label2_1_Xposition
 / vposition = values.label2_1_Yposition
-/ fontstyle = ("Arial", 2.34%, false, false, false, false, 5, 1)
+/ halign = center
+/ valign = center
+/ fontstyle = ("Arial", 2%, false, false, false, false, 5, 1)
 / txcolor = (values.label2_1_R, values.label2_1_G, values.label2_1_B)
+/ size = (10%, 10%)
 </text>
 
 <text label2_2>
 / items = ("<%values.label2_2%>")
 / hposition = values.label2_2_Xposition
 / vposition = values.label2_2_Yposition
-/ fontstyle = ("Arial", 2.34%, false, false, false, false, 5, 1)
+/ halign = center
+/ valign = center
+/ fontstyle = ("Arial", 2%, false, false, false, false, 5, 1)
 / txcolor = (values.label2_2_R, values.label2_2_G, values.label2_2_B)
+/ size = (10%, 10%)
 </text>
 
 <text label2_3>
 / items = ("<%values.label2_3%>")
 / hposition = values.label2_3_Xposition
 / vposition = values.label2_3_Yposition
-/ fontstyle = ("Arial", 2.34%, false, false, false, false, 5, 1)
+/ halign = center
+/ valign = center
+/ fontstyle = ("Arial", 2%, false, false, false, false, 5, 1)
 / txcolor = (values.label2_3_R, values.label2_3_G, values.label2_3_B)
+/ size = (10%, 10%)
 </text>
 
 <text label2_4>
 / items = ("<%values.label2_4%>")
 / hposition = values.label2_4_Xposition
 / vposition = values.label2_4_Yposition
-/ fontstyle = ("Arial", 2.34%, false, false, false, false, 5, 1)
+/ halign = center
+/ valign = center
+/ fontstyle = ("Arial", 2%, false, false, false, false, 5, 1)
 / txcolor = (values.label2_4_R, values.label2_4_G, values.label2_4_B)
+/ size = (10%, 10%)
 </text>
 
 <text label2_5>
 / items = ("<%values.label2_5%>")
 / hposition = values.label2_5_Xposition
 / vposition = values.label2_5_Yposition
-/ fontstyle = ("Arial", 2.34%, false, false, false, false, 5, 1)
+/ halign = center
+/ valign = center
+/ fontstyle = ("Arial", 2%, false, false, false, false, 5, 1)
 / txcolor = (values.label2_5_R, values.label2_5_G, values.label2_5_B)
+/ size = (10%, 10%)
 </text>
 
 <text label2_6>
 / items = ("<%values.label2_6%>")
 / hposition = values.label2_6_Xposition
 / vposition = values.label2_6_Yposition
-/ fontstyle = ("Arial", 2.34%, false, false, false, false, 5, 1)
+/ halign = center
+/ valign = center
+/ fontstyle = ("Arial", 2%, false, false, false, false, 5, 1)
 / txcolor = (values.label2_6_R, values.label2_6_G, values.label2_6_B)
+/ size = (10%, 10%)
 </text>
 
 <text label2_7>
 / items = ("<%values.label2_7%>")
 / hposition = values.label2_7_Xposition
 / vposition = values.label2_7_Yposition
-/ fontstyle = ("Arial", 2.34%, false, false, false, false, 5, 1)
+/ halign = center
+/ valign = center
+/ fontstyle = ("Arial", 2%, false, false, false, false, 5, 1)
 / txcolor = (values.label2_7_R, values.label2_7_G, values.label2_7_B)
+/ size = (10%, 10%)
 </text>
 
 <text label2_8>
 / items = ("<%values.label2_8%>")
 / hposition = values.label2_8_Xposition
 / vposition = values.label2_8_Yposition
-/ fontstyle = ("Arial", 2.34%, false, false, false, false, 5, 1)
+/ halign = center
+/ valign = center
+/ fontstyle = ("Arial", 2%, false, false, false, false, 5, 1)
 / txcolor = (values.label2_8_R, values.label2_8_G, values.label2_8_B)
+/ size = (10%, 10%)
 </text>
 
 
@@ -729,96 +777,128 @@
 / items = ("<%values.content1_1%>")
 / position = (50%, 50%)
 / fontstyle = ("Arial", 2.34%, false, false, false, false, 5, 1)
+/ size = (50%, 20%)
+/ vjustify = center
 </text>
 
 <text content1_2>
 / items = ("<%values.content1_2%>")
 / position = (50%, 50%)
 / fontstyle = ("Arial", 2.34%, false, false, false, false, 5, 1)
+/ size = (50%, 20%)
+/ vjustify = center
 </text>
 
 <text content1_3>
 / items = ("<%values.content1_3%>")
 / position = (50%, 50%)
 / fontstyle = ("Arial", 2.34%, false, false, false, false, 5, 1)
+/ size = (50%, 20%)
+/ vjustify = center
 </text>
 
 <text content1_4>
 / items = ("<%values.content1_4%>")
 / position = (50%, 50%)
 / fontstyle = ("Arial", 2.34%, false, false, false, false, 5, 1)
+/ size = (50%, 20%)
+/ vjustify = center
 </text>
 
 <text content1_5>
 / items = ("<%values.content1_5%>")
 / position = (50%, 50%)
 / fontstyle = ("Arial", 2.34%, false, false, false, false, 5, 1)
+/ size = (50%, 20%)
+/ vjustify = center
 </text>
 
 <text content1_6>
 / items = ("<%values.content1_6%>")
 / position = (50%, 50%)
 / fontstyle = ("Arial", 2.34%, false, false, false, false, 5, 1)
+/ size = (50%, 20%)
+/ vjustify = center
 </text>
 
 <text content1_7>
 / items = ("<%values.content1_7%>")
 / position = (50%, 50%)
 / fontstyle = ("Arial", 2.34%, false, false, false, false, 5, 1)
+/ size = (50%, 20%)
+/ vjustify = center
 </text>
 
 <text content1_8>
 / items = ("<%values.content1_8%>")
 / position = (50%, 50%)
 / fontstyle = ("Arial", 2.34%, false, false, false, false, 5, 1)
+/ size = (50%, 20%)
+/ vjustify = center
 </text>
 
 <text content2_1>
 / items = ("<%values.content2_1%>")
 / position = (50%, 50%)
 / fontstyle = ("Arial", 2.34%, false, false, false, false, 5, 1)
+/ size = (50%, 20%)
+/ vjustify = center
 </text>
 
 <text content2_2>
 / items = ("<%values.content2_2%>")
 / position = (50%, 50%)
 / fontstyle = ("Arial", 2.34%, false, false, false, false, 5, 1)
+/ size = (50%, 20%)
+/ vjustify = center
 </text>
 
 <text content2_3>
 / items = ("<%values.content2_3%>")
 / position = (50%, 50%)
 / fontstyle = ("Arial", 2.34%, false, false, false, false, 5, 1)
+/ size = (50%, 20%)
+/ vjustify = center
 </text>
 
 <text content2_4>
 / items = ("<%values.content2_4%>")
 / position = (50%, 50%)
 / fontstyle = ("Arial", 2.34%, false, false, false, false, 5, 1)
+/ size = (50%, 20%)
+/ vjustify = center
 </text>
 
 <text content2_5>
 / items = ("<%values.content2_5%>")
 / position = (50%, 50%)
 / fontstyle = ("Arial", 2.34%, false, false, false, false, 5, 1)
+/ size = (50%, 20%)
+/ vjustify = center
 </text>
 
 <text content2_6>
 / items = ("<%values.content2_6%>")
 / position = (50%, 50%)
 / fontstyle = ("Arial", 2.34%, false, false, false, false, 5, 1)
+/ size = (50%, 20%)
+/ vjustify = center
 </text>
 
 <text content2_7>
 / items = ("<%values.content2_7%>")
 / position = (50%, 50%)
 / fontstyle = ("Arial", 2.34%, false, false, false, false, 5, 1)
+/ size = (50%, 20%)
+/ vjustify = center
 </text>
 
 <text content2_8>
 / items = ("<%values.content2_8%>")
 / position = (50%, 50%)
 / fontstyle = ("Arial", 2.34%, false, false, false, false, 5, 1)
+/ size = (50%, 20%)
+/ vjustify = center
 </text>
 
 
@@ -1061,7 +1141,7 @@
 
 <trial select1_7>
 / pretrialpause = 200
-/ stimulusframes = [1 = continue, content1_6]
+/ stimulusframes = [1 = continue, content1_7]
 / inputdevice = keyboard
 / validresponse = (" ")
 / recorddata = true
@@ -1192,7 +1272,7 @@
 / validresponse = (" ")
 / recorddata = true
 / ontrialend = [values.stop +=1]
-/ ontrialend = [values.category1 +=1]
+/ ontrialend = [values.category2 +=1]
 / ontrialend = [values.label2_8_R +=255]
 / ontrialend = [values.label2_8_G +=255]
 / ontrialend = [values.label2_8_B +=255]
@@ -1443,6 +1523,6 @@
 
 ================================================================================================
 
-									         End
+		                             End
 
 ================================================================================================

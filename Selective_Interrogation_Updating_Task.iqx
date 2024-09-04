@@ -1,0 +1,2744 @@
+================================================================================================
+
+Selective Interrogation Assessment Task
+Updating Variant
+
+================================================================================================
+                                                                
+  Script Author: Amelia Reynolds (amelia.reynolds@research.uwa.edu.au)
+  Date: 04-09-2024 
+  Last Updated: 04-09-2024 
+	  
+  Task Information .............................................................................
+		 
+	  This is an editable version of the variant of the Selective Interrogation Assessment Task 
+	  adapted by Reynolds et al. (in prep.). This task assesses an individuals' tendency to 
+	  selectively interrogate certain types (i.e., more than one) of information during the 
+	  updating of existing beliefs, such as expectancies. 
+	  
+	  The task is administered in the following two phases.
+	  
+	   1. Induction Phase: Participants are restricted in the information they can access.
+	      For example, as in the template version of the task, participants are restricted
+		  to accessing only one of two types of information.  
+		  
+	   2. Updating Phase: Participants are no longer restricted in the types of information 
+	      they have access to, and are provided the opportunity to access information 
+		  from a larger pool of available information. For example, as in the template version
+		  of the task, participants are able to access two types of information.
+	  
+	  The task permits computation indices representing the relative proportions of different 
+	  categories of information selectively interrogated by each participant during the 
+	  Updating Phase. For an example application of this task, see Reynolds et al. (in press).  	  
+  
+  Citation .....................................................................................
+ 
+	  Reynolds, A., MacLeod, C., & Grafton, B. (in prep.). Trait anxiety-linked biases in 
+	  expectancy updating: Examining the roles of negative interrogation bias and negative 
+	  expectancy bias in affect when approaching potential stressors. 
+
+  Contact Information ..........................................................................
+		 
+	  For additional information or troubleshooting, please contact the author, Amelia Reynolds.
+	  Email: amelia.reynolds@research.uwa.edu.au
+  
+================================================================================================
+
+Script Directory
+
+================================================================================================
+  
+  User Manual
+                                                                              
+	Experiment Set-Up Information ..................................................... 84
+	  Included Files .................................................................. 90
+	  Experimental Stimuli ............................................................ 98
+	  Experimental Task ............................................................... 117
+	  Score Computation ............................................................... 153
+	
+	Data File Information ............................................................. 164
+	  Raw Data ........................................................................ 174
+	  Summary Data .................................................................... 193
+ 
+  Task Script
+  
+    Experimental Stimuli............................................................... 229
+	  Label Stimuli Pool .............................................................. 236
+	  Content Stimuli Pool ............................................................ 366
+	  Selected Stimuli ................................................................ 493
+	
+	Experimental Task ................................................................. 1451
+	  Instructions & Reminders ........................................................ 1457
+	  Task Screens .................................................................... 1515
+	  Selective Interrogation Task .................................................... 2261
+	  Experiment Structure & Condition Allocation ..................................... 2630
+  
+    Data Files ........................................................................ 2666
+	  Raw Data ........................................................................ 2672
+	  Summary Data .................................................................... 2738
+  
+  
+  Note: This directory reflects the code line numbers of the template script. If the template
+  is edited, code line numbers may no longer line up. 
+  
+
+================================================================================================
+                             
+Experiment Set-Up Information
+									 
+================================================================================================									 
+									 
+  Included Files ...............................................................................	
+      
+	  Please save the following files in the same location, and do NOT change the filenames. 
+	
+	(1) Selective_Interrogation_Updating_Task.iqx
+	(2) Grid Partition.jpg  
+	 
+  Experimental Stimuli .........................................................................
+	  
+	  To provide participants the opportunity to selectively interrogate information requires 
+	  information stimuli in two categories, for which relative proportions of selected 
+	  information is to be compared, e.g., negative and positive information. 
+	  
+	  This requires the development of paired information stimuli, such that a participant 
+	  could use one stimulus, the Label, to choose the other stimulus, the Content. In total 
+	  this template script requires 64 stimulus pairs, i.e., 32 for Category 1 and 32 for 
+	  Category 2. For examples of the Label and Content stimulus pairs, see the stimulus set 
+	  used by Reynolds et al. (in press) available for download from the Github repository.
+	  
+	  File: SelectiveInterrogationTask_Stimuli_HospitalFilmStressor.csv
+	  Location: https://github.com/amelia-reynolds/selecitveint-psytask
+
+	  Further instructions on how to edit the stimuli are provided in the Experimental 
+	  Stimuli section of the script. Keep in mind, this is only a template script. You are 
+	  always welcome to customise the code beyond the instructed edits.
+	
+  Experimental Task ............................................................................
+	  
+	  Both the Induction Phase and the Updating Phase of the task commence with the presentation 
+	  of a four-by-four Grid of 16 Label stimuli, each of which is displayed randomly in the 
+	  centre of a position on the Grid. Participants use the mouse to select a Label stimulus,
+	  and upon selection, a new screen presents the paired Content stimulus along with a prompt 
+	  instructing the participant to press the spacebar to continue. When the spacebar is pressed, 
+	  the participant is returned to the Grid screen, with each previously selected Label Stimulus 
+	  no longer displayed. Once participants have selected half the available Label stimuli, the
+	  Grid is refreshed, and 16 new Label stimuli are presented.
+	  
+	  Induction Phase
+	  
+	  In the Induction Phase, participants are randomly assigned to one of two Conditions
+	  (Condition 1, Condition 2). In Condition 1, the Induction Phase presents participants with 
+	  2 Grids, each presenting 16 Label stimuli belonging to Category 1. In Condition 2, the 
+	  Induction Phase also presents participants with 2 Grids, however, each presents 16 Label
+	  stimuli belonging to Category 2. The Condition each participant was assigned to is stored 
+	  in the Summary Data file (see Data File Information section for more information).
+	  
+	  In both Condition 1 and Condition 2, across the two Grids of the Induction Phase, each 
+	  participant is permitted to selectively interrogate 16 Content stimuli of their assigned 
+	  Category from a total of 32 Label Stimuli (of their assigned Category), which are presented 
+	  randomly with no repeats.
+	  
+	  Updating Phase
+	  
+	  In the Updating Phase, participants are also presented with 2 Grids. This time, each Grid 
+	  presents 8 Label stimuli belonging to Category 1 and 8 Label Stimuli.  So, across the two 
+	  Grids, participants are permitted to selectively interrogate 16 Content stimuli from a 
+	  total of 32 Label Stimuli, which are presented randomly with no repeats.
+	  
+	  Further instructions on how to edit the task are provided in the Experimental Task section 
+	  of the script. Keep in mind, this is only a template script. You are always welcome to 
+	  customise the code beyond the instructed edits.
+	  
+  Score Computation ............................................................................
+	  
+	  The Selective Interrogation Assessment Task - Updating Variant permits computation of a 
+	  total index score representing the relative proportion of the categories of information 
+	  selectively interrogated by each participant during the Updating Phase of the task. Please 
+	  see the Summary Data information below for how each may be calculated. 	
+	  
+	  In addition, participant index scores for each of the two Grids presented in the Updating
+	  Phase are provided. These scores may be used to assess internal consistency of the Selective
+	  Interrogation Assessment Task via computation of Cronbach's alpha.	  
+	  
+================================================================================================
+                             
+Data File Information
+										 
+================================================================================================
+
+  The Selective Interrogation Assessment Task saves (1) a raw data file per participant, and 
+  (2) a single summary data file for all participants. To toggle separate raw and summary data 
+  files for each participant follow instruction in Data Files section of the script. 
+  
+  Raw Data .....................................................................................
+ 
+	  file:                         Selective Interrogation Task - Updating Variant_raw#.iqdat
+	  
+	  date, time:                   date and time the script was run
+	  subject:                      current subject id number
+	  build:                        the specific Inquisit version run 
+	 
+	  blockcode, blocknum*:	        name and number of the current block
+      trialcode, trialnum*: 		name and number of the current trial
+	  
+	  trialduration:                duration of current trial
+	  response, latency:            response and response latency on current trial
+	  
+	  stimulusitem#:                each stimulus presented on screen on current trial
+	  
+  *This is a built-in Inquisit variable, and will not always line up with the information 
+   relevant to the experimental task. 
+	
+  Summmary Data .................................................................................
+	 
+	  file:                         Selective Interrogation Task - Updating Variant_summary.iqdat
+	  
+	  startdate, starttime:         date and time the script was run 
+	  subjectid:                    current subject id number
+	  condition:                    Condition subject assigned to (1 or 2)
+	 
+	  category1_grid1:              no. Category 1 Label stimuli participant selected on Grid 1
+	  category2_grid1:              no. Category 2 Label stimuli participant selected on Grid 1
+	  indexscore_grid1*:            no. Category 1 Label stimuli participant selected divided by
+	                                total no. Label stimuli participant selected on Grid 1
+									
+	  category1_grid2:              no. Category 1 Label stimuli participant selected on Grid 2
+	  category2_grid2:              no. Category 2 Label stimuli participant selected on Grid 2
+	  indexscore_grid2*:            no. Category 1 Label stimuli participant selected divided by
+	                                total no. Label stimuli participant selected on Grid 2
+									 
+	  category1_grid3:              no. Category 1 Label stimuli participant selected on Grid 1
+	  category2_grid3:              no. Category 2 Label stimuli participant selected on Grid 1
+	  indexscore_grid3*:            no. Category 1 Label stimuli participant selected divided by
+	                                total no. Label stimuli participant selected on Grid 1
+									
+	  category1_grid4:              no. Category 1 Label stimuli participant selected on Grid 2
+	  category2_grid4:              no. Category 2 Label stimuli participant selected on Grid 2
+	  indexscore_grid4*:            no. Category 1 Label stimuli participant selected divided by
+	                                total no. Label stimuli participant selected on Grid 2	  
+	  
+	  category1_total:              no. Category 1 Label stimuli participant selected in total
+	  category2_total:              no. Category 2 Label stimuli participant selected in total
+	  indexscore_total*:            no. Category 1 Label stimuli participant selected divided by
+	                                total no. Label stimuli participant selected across task
+									
+  *May be edited to reflect the proportion of Category 2 Label stimuli the participant 
+   selected in the Data File section of the script. 
+		  
+================================================================================================
+
+Experimental Stimuli
+
+================================================================================================
+								 
+
+   Label Stimuli Pool........................................................................... 
+		 
+	  This section contains the Label stimuli pool. There are 2 categories (Category 1, 
+	  Category 2), each containing 48 Label stimuli. In total, the are 96 Label stimuli.
+	  
+	  To edit the Label stimuli, insert the text within each set on inverted commas. i.e., 
+	  "Example Label" becomes "Your Label Stimulus". 
+	  
+	  The category and number are there as a guide for pairing the Label and Content stimuli. 
+	  To correctly pair each stimulus, ensure the Label stimuli are in the same order as the 
+	  Content stimuli. 
+	  
+	  WARNING: Do NOT edit any other elements, INCLUDING the list name. To rename the Label 
+	  stimuli categories, you may rename the inactive (grey) text.   
+
+
+   Category 1 Labels
+
+<list labelcategory1>
+/ items = ("Example Label",
+		   "labelcategory1_2",
+		   "labelcategory1_3",
+		   "labelcategory1_4",
+		   "labelcategory1_5",
+		   "labelcategory1_6",
+		   "labelcategory1_7",
+		   "labelcategory1_8",
+		   "labelcategory1_9",
+		   "labelcategory1_10",
+		   "labelcategory1_11",
+		   "labelcategory1_12",
+		   "labelcategory1_13",
+		   "labelcategory1_14",
+		   "labelcategory1_15",
+		   "labelcategory1_16",
+		   "labelcategory1_17",
+		   "labelcategory1_18",
+		   "labelcategory1_19",
+		   "labelcategory1_20",
+		   "labelcategory1_21",
+		   "labelcategory1_22",
+		   "labelcategory1_23",
+		   "labelcategory1_24",
+		   "labelcategory1_25",
+		   "labelcategory1_26",
+		   "labelcategory1_27",
+		   "labelcategory1_28",
+		   "labelcategory1_29",
+		   "labelcategory1_30",
+		   "labelcategory1_31",
+		   "labelcategory1_32",
+		   "labelcategory1_33",
+		   "labelcategory1_34",
+		   "labelcategory1_35",
+		   "labelcategory1_36",
+		   "labelcategory1_37",
+		   "labelcategory1_38",
+		   "labelcategory1_39",
+		   "labelcategory1_40",
+		   "labelcategory1_41",
+		   "labelcategory1_42",
+		   "labelcategory1_43",
+		   "labelcategory1_44",
+		   "labelcategory1_45",
+		   "labelcategory1_46",
+		   "labelcategory1_47",
+		   "labelcategory1_48")
+/ selectionmode = random
+/ replace = false
+/ selectionrate = always
+</list>
+
+   Category 2 Labels
+
+<list labelcategory2>
+/ items = ("labelcategory2_1",
+		   "labelcategory2_2",
+		   "labelcategory2_3",
+		   "labelcategory2_4",
+		   "labelcategory2_5",
+		   "labelcategory2_6",
+		   "labelcategory2_7",
+		   "labelcategory2_8",
+		   "labelcategory2_9",
+		   "labelcategory2_10",
+		   "labelcategory2_11",
+		   "labelcategory2_12",
+		   "labelcategory2_13",
+		   "labelcategory2_14",
+		   "labelcategory2_15",
+		   "labelcategory2_16",
+		   "labelcategory2_17",
+		   "labelcategory2_18",
+		   "labelcategory2_19",
+		   "labelcategory2_20",
+		   "labelcategory2_21",
+		   "labelcategory2_22",
+		   "labelcategory2_23",
+		   "labelcategory2_24",
+		   "labelcategory2_25",
+		   "labelcategory2_26",
+		   "labelcategory2_27",
+		   "labelcategory2_28",
+		   "labelcategory2_29",
+		   "labelcategory2_30",
+		   "labelcategory2_31",
+		   "labelcategory2_32",
+		   "labelcategory2_33",
+		   "labelcategory2_34",
+		   "labelcategory2_35",
+		   "labelcategory2_36",
+		   "labelcategory2_37",
+		   "labelcategory2_38",
+		   "labelcategory2_39",
+		   "labelcategory2_40",
+		   "labelcategory2_41",
+		   "labelcategory2_42",
+		   "labelcategory2_43",
+		   "labelcategory2_44",
+		   "labelcategory2_45",
+		   "labelcategory2_46",
+		   "labelcategory2_47",
+		   "labelcategory2_48")
+/ selectionmode = random
+/ replace = false
+/ selectionrate = always
+</list>
+
+ 
+
+   Content Stimuli Pool......................................................................... 
+		 
+	  This section contains the Content stimuli paired with each of Label stimulus. Again, 
+	  there are There are 2 categories (Category 1, Category 2), each containing 48 Content 
+	  stimuli. In total, the are 96 Content stimuli.
+	  
+	  To edit the Content stimuli, insert the text within each set of inverted commas. i.e., 
+	  "This is an example Content stimulus." becomes "Your Content stimulus here.". 
+	  
+	  The category and number are there as a guide for pairing the Label and Content stimuli. 
+	  To correctly pair each stimulus, ensure the Content stimuli are in the same order as the 
+	  Label stimuli. 
+	  
+	  WARNING: Do NOT rename the list elements. To rename the Content stimuli categories, you 
+	  may rename the inactive (grey) text.  
+	  
+    Category 1 Content
+
+<list contentcategory1>
+/ items = ("This is an example Content stimulus.",
+		   "contentcategory1_2",
+		   "contentcategory1_3",
+		   "contentcategory1_4",
+		   "contentcategory1_5",
+		   "contentcategory1_6",
+		   "contentcategory1_7",
+		   "contentcategory1_8",
+		   "contentcategory1_9",
+		   "contentcategory1_10",
+		   "contentcategory1_11",
+		   "contentcategory1_12",
+		   "contentcategory1_13",
+		   "contentcategory1_14",
+		   "contentcategory1_15",
+		   "contentcategory1_16",
+		   "contentcategory1_17",
+		   "contentcategory1_18",
+		   "contentcategory1_19",
+		   "contentcategory1_20",
+		   "contentcategory1_21",
+		   "contentcategory1_22",
+		   "contentcategory1_23",
+		   "contentcategory1_24",
+		   "contentcategory1_25",
+		   "contentcategory1_26",
+		   "contentcategory1_27",
+		   "contentcategory1_28",
+		   "contentcategory1_29",
+		   "contentcategory1_30",
+		   "contentcategory1_31",
+		   "contentcategory1_32",
+		   "contentcategory1_33",
+		   "contentcategory1_34",
+		   "contentcategory1_35",
+		   "contentcategory1_36",
+		   "contentcategory1_37",
+		   "contentcategory1_38",
+		   "contentcategory1_39",
+		   "contentcategory1_40",
+		   "contentcategory1_41",
+		   "contentcategory1_42",
+		   "contentcategory1_43",
+		   "contentcategory1_44",
+		   "contentcategory1_45",
+		   "contentcategory1_46",
+		   "contentcategory1_47",
+		   "contentcategory1_48")
+/ selectionmode = list.labelcategory1.currentindex
+/ selectionrate = always
+</list>
+
+    Category 2 Content
+
+<list contentcategory2>
+/ items = ("contentcategory2_1",
+           "contentcategory2_2",
+		   "contentcategory2_3",
+		   "contentcategory2_4",
+		   "contentcategory2_5",
+		   "contentcategory2_6",
+		   "contentcategory2_7",
+		   "contentcategory2_8",
+		   "contentcategory2_9",
+		   "contentcategory2_10",
+		   "contentcategory2_11",
+		   "contentcategory2_12",
+		   "contentcategory2_13",
+		   "contentcategory2_14",
+		   "contentcategory2_15",
+		   "contentcategory2_16",
+		   "contentcategory2_17",
+		   "contentcategory2_18",
+		   "contentcategory2_19",
+		   "contentcategory2_20",
+		   "contentcategory2_21",
+		   "contentcategory2_22",
+		   "contentcategory2_23",
+		   "contentcategory2_24",
+		   "contentcategory2_25",
+		   "contentcategory2_26",
+		   "contentcategory2_27",
+		   "contentcategory2_28",
+		   "contentcategory2_29",
+		   "contentcategory2_30",
+		   "contentcategory2_31",
+		   "contentcategory2_32",
+		   "contentcategory2_33",
+		   "contentcategory2_34",
+		   "contentcategory2_35",
+		   "contentcategory2_36",
+		   "contentcategory2_37",
+		   "contentcategory2_38",
+		   "contentcategory2_39",
+		   "contentcategory2_40",
+		   "contentcategory2_41",
+		   "contentcategory2_42",
+		   "contentcategory2_43",
+		   "contentcategory2_44",
+		   "contentcategory2_45",
+		   "contentcategory2_46",
+		   "contentcategory2_47",
+		   "contentcategory2_48")
+/ selectionmode = list.labelcategory2.currentindex
+/ selectionrate = always
+</list>
+
+
+   Selected Stimuli............................................................................
+		 
+	  This section defines the presentation of the 16 Label stimuli displayed in each Grid. 
+	  This section also ensures the 16 paired Content stimuli are presented for each Label
+	  should it be selected.
+
+                                                                           
+   Selected Labels
+   
+<values labels>
+
+/ label1_1 = 0
+/ label1_2 = 0
+/ label1_3 = 0
+/ label1_4 = 0
+/ label1_5 = 0
+/ label1_6 = 0
+/ label1_7 = 0
+/ label1_8 = 0
+/ label1_9 = 0
+/ label1_10 = 0
+/ label1_11 = 0
+/ label1_12 = 0
+/ label1_13 = 0
+/ label1_14 = 0
+/ label1_15 = 0
+/ label1_16 = 0
+
+/ label2_1 = 0
+/ label2_2 = 0
+/ label2_3 = 0
+/ label2_4 = 0
+/ label2_5 = 0
+/ label2_6 = 0
+/ label2_7 = 0
+/ label2_8 = 0
+/ label2_9 = 0
+/ label2_10 = 0
+/ label2_11 = 0
+/ label2_12 = 0
+/ label2_13 = 0
+/ label2_14 = 0
+/ label2_15 = 0
+/ label2_16 = 0
+
+</values>
+
+   Label Position 
+
+<values position>
+
+/ label1_1_Xposition = 0
+/ label1_1_Yposition = 0
+
+/ label1_2_Xposition = 0
+/ label1_2_Yposition = 0
+
+/ label1_3_Xposition = 0
+/ label1_3_Yposition = 0
+
+/ label1_4_Xposition = 0
+/ label1_4_Yposition = 0
+
+/ label1_5_Xposition = 0
+/ label1_5_Yposition = 0
+
+/ label1_6_Xposition = 0
+/ label1_6_Yposition = 0
+
+/ label1_7_Xposition = 0
+/ label1_7_Yposition = 0
+
+/ label1_8_Xposition = 0
+/ label1_8_Yposition = 0
+
+/ label1_9_Xposition = 0
+/ label1_9_Yposition = 0
+
+/ label1_10_Xposition = 0
+/ label1_10_Yposition = 0
+
+/ label1_11_Xposition = 0
+/ label1_11_Yposition = 0
+
+/ label1_12_Xposition = 0
+/ label1_12_Yposition = 0
+
+/ label1_13_Xposition = 0
+/ label1_13_Yposition = 0
+
+/ label1_14_Xposition = 0
+/ label1_14_Yposition = 0
+
+/ label1_15_Xposition = 0
+/ label1_15_Yposition = 0
+
+/ label1_16_Xposition = 0
+/ label1_16_Yposition = 0
+
+/ label2_1_Xposition = 0
+/ label2_1_Yposition = 0
+
+/ label2_2_Xposition = 0
+/ label2_2_Yposition = 0
+
+/ label2_3_Xposition = 0
+/ label2_3_Yposition = 0
+
+/ label2_4_Xposition = 0
+/ label2_4_Yposition = 0
+
+/ label2_5_Xposition = 0
+/ label2_5_Yposition = 0
+
+/ label2_6_Xposition = 0
+/ label2_6_Yposition = 0
+
+/ label2_7_Xposition = 0
+/ label2_7_Yposition = 0
+
+/ label2_8_Xposition = 0
+/ label2_8_Yposition = 0
+
+/ label2_9_Xposition = 0
+/ label2_9_Yposition = 0
+
+/ label2_10_Xposition = 0
+/ label2_10_Yposition = 0
+
+/ label2_11_Xposition = 0
+/ label2_11_Yposition = 0
+
+/ label2_12_Xposition = 0
+/ label2_12_Yposition = 0
+
+/ label2_13_Xposition = 0
+/ label2_13_Yposition = 0
+
+/ label2_14_Xposition = 0
+/ label2_14_Yposition = 0
+
+/ label2_15_Xposition = 0
+/ label2_15_Yposition = 0
+
+/ label2_16_Xposition = 0
+/ label2_16_Yposition = 0
+
+</values>
+
+<list positionx>
+/ items = (20%, 20%, 20%, 20%, 
+           40%, 40%, 40%, 40%,
+		   60%, 60%, 60%, 60%,
+		   80%, 80%, 80%, 80%)
+/ selectionmode = random
+/ replace = false
+/ selectionrate = always
+</list>
+
+<list positiony>
+/ items = (22%, 43%, 64%, 85%,
+           22%, 43%, 64%, 85%,
+		   22%, 43%, 64%, 85%,
+		   22%, 43%, 64%, 85%)
+/ selectionmode = list.positionx.currentindex
+/ selectionrate = always
+</list>
+
+   Label Font Colour 
+
+<values colour>
+
+/ label1_1_R = 0
+/ label1_1_G = 0
+/ label1_1_B = 0
+
+/ label1_2_R = 0
+/ label1_2_G = 0
+/ label1_2_B = 0
+
+/ label1_3_R = 0
+/ label1_3_G = 0
+/ label1_3_B = 0
+
+/ label1_4_R = 0
+/ label1_4_G = 0
+/ label1_4_B = 0
+
+/ label1_5_R = 0
+/ label1_5_G = 0
+/ label1_5_B = 0
+
+/ label1_6_R = 0
+/ label1_6_G = 0
+/ label1_6_B = 0
+
+/ label1_7_R = 0
+/ label1_7_G = 0
+/ label1_7_B = 0
+
+/ label1_8_R = 0
+/ label1_8_G = 0
+/ label1_8_B = 0
+
+/ label1_9_R = 0
+/ label1_9_G = 0
+/ label1_9_B = 0
+
+/ label1_10_R = 0
+/ label1_10_G = 0
+/ label1_10_B = 0
+
+/ label1_11_R = 0
+/ label1_11_G = 0
+/ label1_11_B = 0
+
+/ label1_12_R = 0
+/ label1_12_G = 0
+/ label1_12_B = 0
+
+/ label1_13_R = 0
+/ label1_13_G = 0
+/ label1_13_B = 0
+
+/ label1_14_R = 0
+/ label1_14_G = 0
+/ label1_14_B = 0
+
+/ label1_15_R = 0
+/ label1_15_G = 0
+/ label1_15_B = 0
+
+/ label1_16_R = 0
+/ label1_16_G = 0
+/ label1_16_B = 0
+
+/ label2_1_R = 0
+/ label2_1_G = 0
+/ label2_1_B = 0
+
+/ label2_2_R = 0
+/ label2_2_G = 0
+/ label2_2_B = 0
+
+/ label2_3_R = 0
+/ label2_3_G = 0
+/ label2_3_B = 0
+
+/ label2_4_R = 0
+/ label2_4_G = 0
+/ label2_4_B = 0
+
+/ label2_5_R = 0
+/ label2_5_G = 0
+/ label2_5_B = 0
+
+/ label2_6_R = 0
+/ label2_6_G = 0
+/ label2_6_B = 0
+
+/ label2_7_R = 0
+/ label2_7_G = 0
+/ label2_7_B = 0
+
+/ label2_8_R = 0
+/ label2_8_G = 0
+/ label2_8_B = 0
+
+/ label2_9_R = 0
+/ label2_9_G = 0
+/ label2_9_B = 0
+
+/ label2_10_R = 0
+/ label2_10_G = 0
+/ label2_10_B = 0
+
+/ label2_11_R = 0
+/ label2_11_G = 0
+/ label2_11_B = 0
+
+/ label2_12_R = 0
+/ label2_12_G = 0
+/ label2_12_B = 0
+
+/ label2_13_R = 0
+/ label2_13_G = 0
+/ label2_13_B = 0
+
+/ label2_14_R = 0
+/ label2_14_G = 0
+/ label2_14_B = 0
+
+/ label2_15_R = 0
+/ label2_15_G = 0
+/ label2_15_B = 0
+
+/ label2_16_R = 0
+/ label2_16_G = 0
+/ label2_16_B = 0
+
+
+</values>
+ 
+   Label Text
+
+<text label1_1>
+/ items = ("<%values.label1_1%>")
+/ hposition = values.label1_1_Xposition
+/ vposition = values.label1_1_Yposition
+/ halign = center
+/ valign = center
+/ fontstyle = ("Arial", 2%, false, false, false, false, 5, 1)
+/ txcolor = (values.label1_1_R, values.label1_1_G, values.label1_1_B)
+/ size = (10%, 10%)
+</text>
+
+<text label1_2>
+/ items = ("<%values.label1_2%>")
+/ hposition = values.label1_2_Xposition
+/ vposition = values.label1_2_Yposition
+/ halign = center
+/ valign = center
+/ fontstyle = ("Arial", 2%, false, false, false, false, 5, 1)
+/ txcolor = (values.label1_2_R, values.label1_2_G, values.label1_2_B)
+/ size = (10%, 10%)
+</text>
+
+<text label1_3>
+/ items = ("<%values.label1_3%>")
+/ hposition = values.label1_3_Xposition
+/ vposition = values.label1_3_Yposition
+/ halign = center
+/ valign = center
+/ fontstyle = ("Arial", 2%, false, false, false, false, 5, 1)
+/ txcolor = (values.label1_3_R, values.label1_3_G, values.label1_3_B)
+/ size = (10%, 10%)
+</text>
+
+<text label1_4>
+/ items = ("<%values.label1_4%>")
+/ hposition = values.label1_4_Xposition
+/ vposition = values.label1_4_Yposition
+/ halign = center
+/ valign = center
+/ fontstyle = ("Arial", 2%, false, false, false, false, 5, 1)
+/ txcolor = (values.label1_4_R, values.label1_4_G, values.label1_4_B)
+/ size = (10%, 10%)
+</text>
+
+<text label1_5>
+/ items = ("<%values.label1_5%>")
+/ hposition = values.label1_5_Xposition
+/ vposition = values.label1_5_Yposition
+/ halign = center
+/ valign = center
+/ fontstyle = ("Arial", 2%, false, false, false, false, 5, 1)
+/ txcolor = (values.label1_5_R, values.label1_5_G, values.label1_5_B)
+/ size = (10%, 10%)
+</text>
+
+<text label1_6>
+/ items = ("<%values.label1_6%>")
+/ hposition = values.label1_6_Xposition
+/ vposition = values.label1_6_Yposition
+/ halign = center
+/ valign = center
+/ fontstyle = ("Arial", 2%, false, false, false, false, 5, 1)
+/ txcolor = (values.label1_6_R, values.label1_6_G, values.label1_6_B)
+/ size = (10%, 10%)
+</text>
+
+<text label1_7>
+/ items = ("<%values.label1_7%>")
+/ hposition = values.label1_7_Xposition
+/ vposition = values.label1_7_Yposition
+/ halign = center
+/ valign = center
+/ fontstyle = ("Arial", 2%, false, false, false, false, 5, 1)
+/ txcolor = (values.label1_7_R, values.label1_7_G, values.label1_7_B)
+/ size = (10%, 10%)
+</text>
+
+<text label1_8>
+/ items = ("<%values.label1_8%>")
+/ hposition = values.label1_8_Xposition
+/ vposition = values.label1_8_Yposition
+/ halign = center
+/ valign = center
+/ fontstyle = ("Arial", 2%, false, false, false, false, 5, 1)
+/ txcolor = (values.label1_8_R, values.label1_8_G, values.label1_8_B)
+/ size = (10%, 10%)
+</text>
+
+<text label1_9>
+/ items = ("<%values.label1_9%>")
+/ hposition = values.label1_9_Xposition
+/ vposition = values.label1_9_Yposition
+/ halign = center
+/ valign = center
+/ fontstyle = ("Arial", 2%, false, false, false, false, 5, 1)
+/ txcolor = (values.label1_9_R, values.label1_9_G, values.label1_9_B)
+/ size = (10%, 10%)
+</text>
+
+<text label1_10>
+/ items = ("<%values.label1_10%>")
+/ hposition = values.label1_10_Xposition
+/ vposition = values.label1_10_Yposition
+/ halign = center
+/ valign = center
+/ fontstyle = ("Arial", 2%, false, false, false, false, 5, 1)
+/ txcolor = (values.label1_10_R, values.label1_10_G, values.label1_10_B)
+/ size = (10%, 10%)
+</text>
+
+<text label1_11>
+/ items = ("<%values.label1_11%>")
+/ hposition = values.label1_11_Xposition
+/ vposition = values.label1_11_Yposition
+/ halign = center
+/ valign = center
+/ fontstyle = ("Arial", 2%, false, false, false, false, 5, 1)
+/ txcolor = (values.label1_11_R, values.label1_11_G, values.label1_11_B)
+/ size = (10%, 10%)
+</text>
+
+<text label1_12>
+/ items = ("<%values.label1_12%>")
+/ hposition = values.label1_12_Xposition
+/ vposition = values.label1_12_Yposition
+/ halign = center
+/ valign = center
+/ fontstyle = ("Arial", 2%, false, false, false, false, 5, 1)
+/ txcolor = (values.label1_12_R, values.label1_12_G, values.label1_12_B)
+/ size = (10%, 10%)
+</text>
+
+<text label1_13>
+/ items = ("<%values.label1_13%>")
+/ hposition = values.label1_13_Xposition
+/ vposition = values.label1_13_Yposition
+/ halign = center
+/ valign = center
+/ fontstyle = ("Arial", 2%, false, false, false, false, 5, 1)
+/ txcolor = (values.label1_13_R, values.label1_13_G, values.label1_13_B)
+/ size = (10%, 10%)
+</text>
+
+<text label1_14>
+/ items = ("<%values.label1_14%>")
+/ hposition = values.label1_14_Xposition
+/ vposition = values.label1_14_Yposition
+/ halign = center
+/ valign = center
+/ fontstyle = ("Arial", 2%, false, false, false, false, 5, 1)
+/ txcolor = (values.label1_14_R, values.label1_14_G, values.label1_14_B)
+/ size = (10%, 10%)
+</text>
+
+<text label1_15>
+/ items = ("<%values.label1_15%>")
+/ hposition = values.label1_15_Xposition
+/ vposition = values.label1_15_Yposition
+/ halign = center
+/ valign = center
+/ fontstyle = ("Arial", 2%, false, false, false, false, 5, 1)
+/ txcolor = (values.label1_15_R, values.label1_15_G, values.label1_15_B)
+/ size = (10%, 10%)
+</text>
+
+<text label1_16>
+/ items = ("<%values.label1_16%>")
+/ hposition = values.label1_16_Xposition
+/ vposition = values.label1_16_Yposition
+/ halign = center
+/ valign = center
+/ fontstyle = ("Arial", 2%, false, false, false, false, 5, 1)
+/ txcolor = (values.label1_16_R, values.label1_16_G, values.label1_16_B)
+/ size = (10%, 10%)
+</text>
+
+<text label2_1>
+/ items = ("<%values.label2_1%>")
+/ hposition = values.label2_1_Xposition
+/ vposition = values.label2_1_Yposition
+/ halign = center
+/ valign = center
+/ fontstyle = ("Arial", 2%, false, false, false, false, 5, 1)
+/ txcolor = (values.label2_1_R, values.label2_1_G, values.label2_1_B)
+/ size = (10%, 10%)
+</text>
+
+<text label2_2>
+/ items = ("<%values.label2_2%>")
+/ hposition = values.label2_2_Xposition
+/ vposition = values.label2_2_Yposition
+/ halign = center
+/ valign = center
+/ fontstyle = ("Arial", 2%, false, false, false, false, 5, 1)
+/ txcolor = (values.label2_2_R, values.label2_2_G, values.label2_2_B)
+/ size = (10%, 10%)
+</text>
+
+<text label2_3>
+/ items = ("<%values.label2_3%>")
+/ hposition = values.label2_3_Xposition
+/ vposition = values.label2_3_Yposition
+/ halign = center
+/ valign = center
+/ fontstyle = ("Arial", 2%, false, false, false, false, 5, 1)
+/ txcolor = (values.label2_3_R, values.label2_3_G, values.label2_3_B)
+/ size = (10%, 10%)
+</text>
+
+<text label2_4>
+/ items = ("<%values.label2_4%>")
+/ hposition = values.label2_4_Xposition
+/ vposition = values.label2_4_Yposition
+/ halign = center
+/ valign = center
+/ fontstyle = ("Arial", 2%, false, false, false, false, 5, 1)
+/ txcolor = (values.label2_4_R, values.label2_4_G, values.label2_4_B)
+/ size = (10%, 10%)
+</text>
+
+<text label2_5>
+/ items = ("<%values.label2_5%>")
+/ hposition = values.label2_5_Xposition
+/ vposition = values.label2_5_Yposition
+/ halign = center
+/ valign = center
+/ fontstyle = ("Arial", 2%, false, false, false, false, 5, 1)
+/ txcolor = (values.label2_5_R, values.label2_5_G, values.label2_5_B)
+/ size = (10%, 10%)
+</text>
+
+<text label2_6>
+/ items = ("<%values.label2_6%>")
+/ hposition = values.label2_6_Xposition
+/ vposition = values.label2_6_Yposition
+/ halign = center
+/ valign = center
+/ fontstyle = ("Arial", 2%, false, false, false, false, 5, 1)
+/ txcolor = (values.label2_6_R, values.label2_6_G, values.label2_6_B)
+/ size = (10%, 10%)
+</text>
+
+<text label2_7>
+/ items = ("<%values.label2_7%>")
+/ hposition = values.label2_7_Xposition
+/ vposition = values.label2_7_Yposition
+/ halign = center
+/ valign = center
+/ fontstyle = ("Arial", 2%, false, false, false, false, 5, 1)
+/ txcolor = (values.label2_7_R, values.label2_7_G, values.label2_7_B)
+/ size = (10%, 10%)
+</text>
+
+<text label2_8>
+/ items = ("<%values.label2_8%>")
+/ hposition = values.label2_8_Xposition
+/ vposition = values.label2_8_Yposition
+/ halign = center
+/ valign = center
+/ fontstyle = ("Arial", 2%, false, false, false, false, 5, 1)
+/ txcolor = (values.label2_8_R, values.label2_8_G, values.label2_8_B)
+/ size = (10%, 10%)
+</text>
+
+<text label2_9>
+/ items = ("<%values.label2_9%>")
+/ hposition = values.label2_9_Xposition
+/ vposition = values.label2_9_Yposition
+/ halign = center
+/ valign = center
+/ fontstyle = ("Arial", 2%, false, false, false, false, 5, 1)
+/ txcolor = (values.label2_9_R, values.label2_9_G, values.label2_9_B)
+/ size = (10%, 10%)
+</text>
+
+<text label2_10>
+/ items = ("<%values.label2_10%>")
+/ hposition = values.label2_10_Xposition
+/ vposition = values.label2_10_Yposition
+/ halign = center
+/ valign = center
+/ fontstyle = ("Arial", 2%, false, false, false, false, 5, 1)
+/ txcolor = (values.label2_10_R, values.label2_10_G, values.label2_10_B)
+/ size = (10%, 10%)
+</text>
+
+<text label2_11>
+/ items = ("<%values.label2_11%>")
+/ hposition = values.label2_11_Xposition
+/ vposition = values.label2_11_Yposition
+/ halign = center
+/ valign = center
+/ fontstyle = ("Arial", 2%, false, false, false, false, 5, 1)
+/ txcolor = (values.label2_11_R, values.label2_11_G, values.label2_11_B)
+/ size = (10%, 10%)
+</text>
+
+<text label2_12>
+/ items = ("<%values.label2_12%>")
+/ hposition = values.label2_12_Xposition
+/ vposition = values.label2_12_Yposition
+/ halign = center
+/ valign = center
+/ fontstyle = ("Arial", 2%, false, false, false, false, 5, 1)
+/ txcolor = (values.label2_12_R, values.label2_12_G, values.label2_12_B)
+/ size = (10%, 10%)
+</text>
+
+<text label2_13>
+/ items = ("<%values.label2_13%>")
+/ hposition = values.label2_13_Xposition
+/ vposition = values.label2_13_Yposition
+/ halign = center
+/ valign = center
+/ fontstyle = ("Arial", 2%, false, false, false, false, 5, 1)
+/ txcolor = (values.label2_13_R, values.label2_13_G, values.label2_13_B)
+/ size = (10%, 10%)
+</text>
+
+<text label2_14>
+/ items = ("<%values.label2_14%>")
+/ hposition = values.label2_14_Xposition
+/ vposition = values.label2_14_Yposition
+/ halign = center
+/ valign = center
+/ fontstyle = ("Arial", 2%, false, false, false, false, 5, 1)
+/ txcolor = (values.label2_14_R, values.label2_14_G, values.label2_14_B)
+/ size = (10%, 10%)
+</text>
+
+<text label2_15>
+/ items = ("<%values.label2_15%>")
+/ hposition = values.label2_15_Xposition
+/ vposition = values.label2_15_Yposition
+/ halign = center
+/ valign = center
+/ fontstyle = ("Arial", 2%, false, false, false, false, 5, 1)
+/ txcolor = (values.label2_15_R, values.label2_15_G, values.label2_15_B)
+/ size = (10%, 10%)
+</text>
+
+<text label2_16>
+/ items = ("<%values.label2_16%>")
+/ hposition = values.label2_16_Xposition
+/ vposition = values.label2_16_Yposition
+/ halign = center
+/ valign = center
+/ fontstyle = ("Arial", 2%, false, false, false, false, 5, 1)
+/ txcolor = (values.label2_16_R, values.label2_16_G, values.label2_16_B)
+/ size = (10%, 10%)
+</text>
+
+
+   Selected Content 
+
+<values content>
+
+/ selecteditem = 0
+
+/ content1_1 = 0
+/ content1_2 = 0
+/ content1_3 = 0
+/ content1_4 = 0
+/ content1_5 = 0
+/ content1_6 = 0
+/ content1_7 = 0
+/ content1_8 = 0
+/ content1_9 = 0
+/ content1_10 = 0
+/ content1_11 = 0
+/ content1_12 = 0
+/ content1_13 = 0
+/ content1_14 = 0
+/ content1_15 = 0
+/ content1_16 = 0
+
+/ content2_1 = 0
+/ content2_2 = 0
+/ content2_3 = 0
+/ content2_4 = 0
+/ content2_5 = 0
+/ content2_6 = 0
+/ content2_7 = 0
+/ content2_8 = 0
+/ content2_9 = 0
+/ content2_10 = 0
+/ content2_11 = 0
+/ content2_12 = 0
+/ content2_13 = 0
+/ content2_14 = 0
+/ content2_15 = 0
+/ content2_16 = 0
+
+</values>
+
+   Content Text  
+
+<text content1_1>
+/ items = ("<%values.content1_1%>")
+/ position = (50%, 50%)
+/ fontstyle = ("Arial", 2.34%, false, false, false, false, 5, 1)
+/ size = (50%, 20%)
+/ vjustify = center
+</text>
+
+<text content1_2>
+/ items = ("<%values.content1_2%>")
+/ position = (50%, 50%)
+/ fontstyle = ("Arial", 2.34%, false, false, false, false, 5, 1)
+/ size = (50%, 20%)
+/ vjustify = center
+</text>
+
+<text content1_3>
+/ items = ("<%values.content1_3%>")
+/ position = (50%, 50%)
+/ fontstyle = ("Arial", 2.34%, false, false, false, false, 5, 1)
+/ size = (50%, 20%)
+/ vjustify = center
+</text>
+
+<text content1_4>
+/ items = ("<%values.content1_4%>")
+/ position = (50%, 50%)
+/ fontstyle = ("Arial", 2.34%, false, false, false, false, 5, 1)
+/ size = (50%, 20%)
+/ vjustify = center
+</text>
+
+<text content1_5>
+/ items = ("<%values.content1_5%>")
+/ position = (50%, 50%)
+/ fontstyle = ("Arial", 2.34%, false, false, false, false, 5, 1)
+/ size = (50%, 20%)
+/ vjustify = center
+</text>
+
+<text content1_6>
+/ items = ("<%values.content1_6%>")
+/ position = (50%, 50%)
+/ fontstyle = ("Arial", 2.34%, false, false, false, false, 5, 1)
+/ size = (50%, 20%)
+/ vjustify = center
+</text>
+
+<text content1_7>
+/ items = ("<%values.content1_7%>")
+/ position = (50%, 50%)
+/ fontstyle = ("Arial", 2.34%, false, false, false, false, 5, 1)
+/ size = (50%, 20%)
+/ vjustify = center
+</text>
+
+<text content1_8>
+/ items = ("<%values.content1_8%>")
+/ position = (50%, 50%)
+/ fontstyle = ("Arial", 2.34%, false, false, false, false, 5, 1)
+/ size = (50%, 20%)
+/ vjustify = center
+</text>
+
+<text content1_9>
+/ items = ("<%values.content1_9%>")
+/ position = (50%, 50%)
+/ fontstyle = ("Arial", 2.34%, false, false, false, false, 5, 1)
+/ size = (50%, 20%)
+/ vjustify = center
+</text>
+
+<text content1_10>
+/ items = ("<%values.content1_10%>")
+/ position = (50%, 50%)
+/ fontstyle = ("Arial", 2.34%, false, false, false, false, 5, 1)
+/ size = (50%, 20%)
+/ vjustify = center
+</text>
+
+<text content1_11>
+/ items = ("<%values.content1_11%>")
+/ position = (50%, 50%)
+/ fontstyle = ("Arial", 2.34%, false, false, false, false, 5, 1)
+/ size = (50%, 20%)
+/ vjustify = center
+</text>
+
+<text content1_12>
+/ items = ("<%values.content1_12%>")
+/ position = (50%, 50%)
+/ fontstyle = ("Arial", 2.34%, false, false, false, false, 5, 1)
+/ size = (50%, 20%)
+/ vjustify = center
+</text>
+
+<text content1_13>
+/ items = ("<%values.content1_13%>")
+/ position = (50%, 50%)
+/ fontstyle = ("Arial", 2.34%, false, false, false, false, 5, 1)
+/ size = (50%, 20%)
+/ vjustify = center
+</text>
+
+<text content1_14>
+/ items = ("<%values.content1_14%>")
+/ position = (50%, 50%)
+/ fontstyle = ("Arial", 2.34%, false, false, false, false, 5, 1)
+/ size = (50%, 20%)
+/ vjustify = center
+</text>
+
+<text content1_15>
+/ items = ("<%values.content1_15%>")
+/ position = (50%, 50%)
+/ fontstyle = ("Arial", 2.34%, false, false, false, false, 5, 1)
+/ size = (50%, 20%)
+/ vjustify = center
+</text>
+
+<text content1_16>
+/ items = ("<%values.content1_16%>")
+/ position = (50%, 50%)
+/ fontstyle = ("Arial", 2.34%, false, false, false, false, 5, 1)
+/ size = (50%, 20%)
+/ vjustify = center
+</text>
+
+<text content2_1>
+/ items = ("<%values.content2_1%>")
+/ position = (50%, 50%)
+/ fontstyle = ("Arial", 2.34%, false, false, false, false, 5, 1)
+/ size = (50%, 20%)
+/ vjustify = center
+</text>
+
+<text content2_2>
+/ items = ("<%values.content2_2%>")
+/ position = (50%, 50%)
+/ fontstyle = ("Arial", 2.34%, false, false, false, false, 5, 1)
+/ size = (50%, 20%)
+/ vjustify = center
+</text>
+
+<text content2_3>
+/ items = ("<%values.content2_3%>")
+/ position = (50%, 50%)
+/ fontstyle = ("Arial", 2.34%, false, false, false, false, 5, 1)
+/ size = (50%, 20%)
+/ vjustify = center
+</text>
+
+<text content2_4>
+/ items = ("<%values.content2_4%>")
+/ position = (50%, 50%)
+/ fontstyle = ("Arial", 2.34%, false, false, false, false, 5, 1)
+/ size = (50%, 20%)
+/ vjustify = center
+</text>
+
+<text content2_5>
+/ items = ("<%values.content2_5%>")
+/ position = (50%, 50%)
+/ fontstyle = ("Arial", 2.34%, false, false, false, false, 5, 1)
+/ size = (50%, 20%)
+/ vjustify = center
+</text>
+
+<text content2_6>
+/ items = ("<%values.content2_6%>")
+/ position = (50%, 50%)
+/ fontstyle = ("Arial", 2.34%, false, false, false, false, 5, 1)
+/ size = (50%, 20%)
+/ vjustify = center
+</text>
+
+<text content2_7>
+/ items = ("<%values.content2_7%>")
+/ position = (50%, 50%)
+/ fontstyle = ("Arial", 2.34%, false, false, false, false, 5, 1)
+/ size = (50%, 20%)
+/ vjustify = center
+</text>
+
+<text content2_8>
+/ items = ("<%values.content2_8%>")
+/ position = (50%, 50%)
+/ fontstyle = ("Arial", 2.34%, false, false, false, false, 5, 1)
+/ size = (50%, 20%)
+/ vjustify = center
+</text>
+
+<text content2_9>
+/ items = ("<%values.content2_9%>")
+/ position = (50%, 50%)
+/ fontstyle = ("Arial", 2.34%, false, false, false, false, 5, 1)
+/ size = (50%, 20%)
+/ vjustify = center
+</text>
+
+<text content2_10>
+/ items = ("<%values.content2_10%>")
+/ position = (50%, 50%)
+/ fontstyle = ("Arial", 2.34%, false, false, false, false, 5, 1)
+/ size = (50%, 20%)
+/ vjustify = center
+</text>
+
+<text content2_11>
+/ items = ("<%values.content2_11%>")
+/ position = (50%, 50%)
+/ fontstyle = ("Arial", 2.34%, false, false, false, false, 5, 1)
+/ size = (50%, 20%)
+/ vjustify = center
+</text>
+
+<text content2_12>
+/ items = ("<%values.content2_12%>")
+/ position = (50%, 50%)
+/ fontstyle = ("Arial", 2.34%, false, false, false, false, 5, 1)
+/ size = (50%, 20%)
+/ vjustify = center
+</text>
+
+<text content2_13>
+/ items = ("<%values.content2_13%>")
+/ position = (50%, 50%)
+/ fontstyle = ("Arial", 2.34%, false, false, false, false, 5, 1)
+/ size = (50%, 20%)
+/ vjustify = center
+</text>
+
+<text content2_14>
+/ items = ("<%values.content2_14%>")
+/ position = (50%, 50%)
+/ fontstyle = ("Arial", 2.34%, false, false, false, false, 5, 1)
+/ size = (50%, 20%)
+/ vjustify = center
+</text>
+
+<text content2_15>
+/ items = ("<%values.content2_15%>")
+/ position = (50%, 50%)
+/ fontstyle = ("Arial", 2.34%, false, false, false, false, 5, 1)
+/ size = (50%, 20%)
+/ vjustify = center
+</text>
+
+<text content2_16>
+/ items = ("<%values.content2_16%>")
+/ position = (50%, 50%)
+/ fontstyle = ("Arial", 2.34%, false, false, false, false, 5, 1)
+/ size = (50%, 20%)
+/ vjustify = center
+</text>
+
+================================================================================================
+
+									   Experimental Task
+
+================================================================================================
+
+   Instructions & Reminders ....................................................................
+		 
+	  Please insert task instructions and alerts below. 
+	  
+	  Before each new Grid, the New Grid Alert notifies the participant that new information
+	  will now be made avaialble is displayed for 2000ms. 
+	 
+	  After all Grids are presented, the Task End Alert notifies the participant that the 
+	  experimental task is complete is displayed for 2000ms. 
+
+   Task Instructions
+
+<text taskinstructionstitle>
+/ items = ("Task Instructions")
+/ fontstyle = ("Arial", 2.69%, true, false, false, false, 5, 1)
+/ position = (50%, 25%)
+</text>
+
+<surveypage taskinstructions>
+/ caption = "~n~n~n~n~n~n~n~nInsert task instructions here."
+/ stimulusframes = [1 = taskinstructionstitle]
+/ fontstyle = ("Arial", 2.47%, false, false, false, false, 5, 1)
+/ itemspacing = 20%
+/ navigationbuttonfontstyle = ("Arial", 1.82%, true, false, false, false, 5, 1)
+/ showpagenumbers = false
+/ showbackbutton = false
+/ showquestionnumbers = false
+/ finishlabel = "Click to Continue"
+/ nextbuttonposition = (80%,90%)
+</surveypage>
+
+   New Grid Alert
+
+<text newgrid>
+/ items = ("New information will now be made available.")
+/ fontstyle = ("Arial", 2.47%, true, false, false, false, 5, 1)
+/ position = (50%, 50%)
+</text>
+
+<trial newgrid>
+/ stimulusframes = [1 = newgrid]
+/ trialduration = 2000
+</trial>
+
+   Task End Alert
+
+<text endtask>
+/ items = ("Experimental task complete.")
+/ fontstyle = ("Arial", 2.47%, true, false, false, false, 5, 1)
+/ position = (50%, 50%)
+</text>
+
+<trial endtask>
+/ stimulusframes = [1 = endtask]
+/ trialduration = 2000
+</trial>
+
+   
+   Task Screens .................................................................................
+   
+      This section describes the Grid Screens and Content Screens on which the Label stimuli
+	  and paired Content stimuli are presented, respectively.
+	  
+    Induction Phase (Condition 1, Condition 2) - Grid Screens: 
+	 
+	  Displays a four-by-four partioned grid of 16 Label stimuli (from either Category 1 or 
+	  Category 2, depending on assigned Condition), displaying each randomly in the centre of 
+	  a position on the partitioned grid (see partition element). To select, i.e., interrogate, 
+	  a Label stimulus, the participant uses the mouse. Upon selection, the paired Content 
+	  Screen is presented (see below). Once the participant is returned to the Grid Screen, 
+	  each previously selected Label stimulus no longer displayed. 
+	  
+	 Updating Phase - Grid Screen: 
+	 
+	  Displays a four-by-four partioned grid of 16 Label stimuli (8 from Category 1, 8 from 
+	  Category 2), displaying each randomly in the centre of a position on the partitioned 
+	  grid (see partition element). To select, i.e., interrogate, a Label stimulus, the 
+	  participant uses the mouse. Upon selection, the paired Content Screen is presented 
+	  (see below). Once the participant is returned to the Grid Screen, each previously 
+	  selected Label stimulus no longer displayed. 
+	  
+	 Content Screen:
+	  
+	  Upon selection of a Label stimulus on the Grid Screen, the Content Screen presents 
+	  the paired Content stimulus along with a prompt instructing the participant to 
+	  indicate having read the Content by pressing the spacebar. When the spacebar is 
+	  pressed, the participant is returned to the Grid Screen.
+
+  Grid Screens
+
+<picture partition>
+/ items = ("Grid Partition.jpg")
+/ size = (100%, 100%)
+/ position = (50%, 50%)
+/ halign = center
+/ valign = center
+</picture>
+
+<trial grid_induction_condition1>
+/ pretrialpause = 200
+/ stimulusframes = [1 = partition,
+                        label1_1, label1_2, label1_3, label1_4,
+						label1_5, label1_6, label1_7, label1_8,
+                        label1_9, label1_10, label1_11, label1_12,
+						label1_13, label1_14, label1_15, label1_16]
+/ inputdevice = mouse
+/ validresponse = (
+  label1_1, label1_2, label1_3, label1_4,
+  label1_5, label1_6, label1_7, label1_8,
+  label1_9, label1_10, label1_11, label1_12,
+  label1_13, label1_14, label1_15, label1_16
+  )
+/ recorddata = true
+
+/ branch = [if (trial.grid_induction_condition1.response == "label1_1" && values.label1_1_R !="255") {trial.select1_1;}
+	        else if (trial.grid_induction_condition1.response == "label1_1") {trial.grid_induction_condition1;}]
+/ branch = [if (trial.grid_induction_condition1.response == "label1_2" && values.label1_2_R !="255") {trial.select1_2;}
+	        else if (trial.grid_induction_condition1.response == "label1_2") {trial.grid_induction_condition1;}]
+/ branch = [if (trial.grid_induction_condition1.response == "label1_3" && values.label1_3_R !="255") {trial.select1_3;}
+	        else if (trial.grid_induction_condition1.response == "label1_3") {trial.grid_induction_condition1;}]
+/ branch = [if (trial.grid_induction_condition1.response == "label1_4" && values.label1_4_R !="255") {trial.select1_4;}
+	        else if (trial.grid_induction_condition1.response == "label1_4") {trial.grid_induction_condition1;}]
+/ branch = [if (trial.grid_induction_condition1.response == "label1_5" && values.label1_5_R !="255") {trial.select1_5;}
+	        else if (trial.grid_induction_condition1.response == "label1_5") {trial.grid_induction_condition1;}]
+/ branch = [if (trial.grid_induction_condition1.response == "label1_6" && values.label1_6_R !="255") {trial.select1_6;}
+	        else if (trial.grid_induction_condition1.response == "label1_6") {trial.grid_induction_condition1;}]
+/ branch = [if (trial.grid_induction_condition1.response == "label1_7" && values.label1_7_R !="255") {trial.select1_7;}
+	        else if (trial.grid_induction_condition1.response == "label1_7") {trial.grid_induction_condition1;}]
+/ branch = [if (trial.grid_induction_condition1.response == "label1_8" && values.label1_8_R !="255") {trial.select1_8;}
+	        else if (trial.grid_induction_condition1.response == "label1_8") {trial.grid_induction_condition1;}]
+
+/ branch = [if (trial.grid_induction_condition1.response == "label1_9" && values.label1_9_R !="255") {trial.select1_9;}
+	        else if (trial.grid_induction_condition1.response == "label1_9") {trial.grid_induction_condition1;}]
+/ branch = [if (trial.grid_induction_condition1.response == "label1_10" && values.label1_10_R !="255") {trial.select1_10;}
+	        else if (trial.grid_induction_condition1.response == "label1_10") {trial.grid_induction_condition1;}]
+/ branch = [if (trial.grid_induction_condition1.response == "label1_11" && values.label1_11_R !="255") {trial.select1_11;}
+	        else if (trial.grid_induction_condition1.response == "label1_11") {trial.grid_induction_condition1;}]
+/ branch = [if (trial.grid_induction_condition1.response == "label1_12" && values.label1_12_R !="255") {trial.select1_12;}
+	        else if (trial.grid_induction_condition1.response == "label1_12") {trial.grid_induction_condition1;}]
+/ branch = [if (trial.grid_induction_condition1.response == "label1_13" && values.label1_13_R !="255") {trial.select1_13;}
+	        else if (trial.grid_induction_condition1.response == "label1_13") {trial.grid_induction_condition1;}]
+/ branch = [if (trial.grid_induction_condition1.response == "label1_14" && values.label1_14_R !="255") {trial.select1_14;}
+	        else if (trial.grid_induction_condition1.response == "label1_14") {trial.grid_induction_condition1;}]
+/ branch = [if (trial.grid_induction_condition1.response == "label1_15" && values.label1_15_R !="255") {trial.select1_15;}
+	        else if (trial.grid_induction_condition1.response == "label1_15") {trial.grid_induction_condition1;}]
+/ branch = [if (trial.grid_induction_condition1.response == "label1_16" && values.label1_16_R !="255") {trial.select1_16;}
+	        else if (trial.grid_induction_condition1.response == "label1_16") {trial.grid_induction_condition1;}]
+		
+</trial>
+
+<trial grid_induction_condition2>
+/ pretrialpause = 200
+/ stimulusframes = [1 = partition,
+                        label2_1, label2_2, label2_3, label2_4,
+						label2_5, label2_6, label2_7, label2_8,
+                        label2_9, label2_10, label2_11, label2_12,
+						label2_13, label2_14, label2_15, label2_16]
+/ inputdevice = mouse
+/ validresponse = (
+  label2_1, label2_2, label2_3, label2_4,
+  label2_5, label2_6, label2_7, label2_8,
+  label2_9, label2_10, label2_11, label2_12,
+  label2_13, label2_14, label2_15, label2_16
+  )
+/ recorddata = true
+/ branch = [if (trial.grid_induction_condition2.response == "label2_1" && values.label2_1_R !="255") {trial.select2_1;}
+	        else if (trial.grid_induction_condition2.response == "label2_1") {trial.grid_induction_condition2;}]
+/ branch = [if (trial.grid_induction_condition2.response == "label2_2" && values.label2_2_R !="255") {trial.select2_2;}
+	        else if (trial.grid_induction_condition2.response == "label2_2") {trial.grid_induction_condition2;}]
+/ branch = [if (trial.grid_induction_condition2.response == "label2_3" && values.label2_3_R !="255") {trial.select2_3;}
+	        else if (trial.grid_induction_condition2.response == "label2_3") {trial.grid_induction_condition2;}]
+/ branch = [if (trial.grid_induction_condition2.response == "label2_4" && values.label2_4_R !="255") {trial.select2_4;}
+	        else if (trial.grid_induction_condition2.response == "label2_4") {trial.grid_induction_condition2;}]
+/ branch = [if (trial.grid_induction_condition2.response == "label2_5" && values.label2_5_R !="255") {trial.select2_5;}
+	        else if (trial.grid_induction_condition2.response == "label2_5") {trial.grid_induction_condition2;}]
+/ branch = [if (trial.grid_induction_condition2.response == "label2_6" && values.label2_6_R !="255") {trial.select2_6;}
+	        else if (trial.grid_induction_condition2.response == "label2_6") {trial.grid_induction_condition2;}]
+/ branch = [if (trial.grid_induction_condition2.response == "label2_7" && values.label2_7_R !="255") {trial.select2_7;}
+	        else if (trial.grid_induction_condition2.response == "label2_7") {trial.grid_induction_condition2;}]
+/ branch = [if (trial.grid_induction_condition2.response == "label2_8" && values.label2_8_R !="255") {trial.select2_8;}
+	        else if (trial.grid_induction_condition2.response == "label2_8") {trial.grid_induction_condition2;}]
+
+/ branch = [if (trial.grid_induction_condition2.response == "label2_9" && values.label2_9_R !="255") {trial.select2_9;}
+	        else if (trial.grid_induction_condition2.response == "label2_9") {trial.grid_induction_condition2;}]
+/ branch = [if (trial.grid_induction_condition2.response == "label2_10" && values.label2_10_R !="255") {trial.select2_10;}
+	        else if (trial.grid_induction_condition2.response == "label2_10") {trial.grid_induction_condition2;}]
+/ branch = [if (trial.grid_induction_condition2.response == "label2_11" && values.label2_11_R !="255") {trial.select2_11;}
+	        else if (trial.grid_induction_condition2.response == "label2_11") {trial.grid_induction_condition2;}]
+/ branch = [if (trial.grid_induction_condition2.response == "label2_12" && values.label2_12_R !="255") {trial.select2_12;}
+	        else if (trial.grid_induction_condition2.response == "label2_12") {trial.grid_induction_condition2;}]
+/ branch = [if (trial.grid_induction_condition2.response == "label2_13" && values.label2_13_R !="255") {trial.select2_13;}
+	        else if (trial.grid_induction_condition2.response == "label2_13") {trial.grid_induction_condition2;}]
+/ branch = [if (trial.grid_induction_condition2.response == "label2_14" && values.label2_14_R !="255") {trial.select2_14;}
+	        else if (trial.grid_induction_condition2.response == "label2_14") {trial.grid_induction_condition2;}]
+/ branch = [if (trial.grid_induction_condition2.response == "label2_15" && values.label2_15_R !="255") {trial.select2_15;}
+	        else if (trial.grid_induction_condition2.response == "label2_15") {trial.grid_induction_condition2;}]
+/ branch = [if (trial.grid_induction_condition2.response == "label2_16" && values.label2_16_R !="255") {trial.select2_16;}
+	        else if (trial.grid_induction_condition2.response == "label2_16") {trial.grid_induction_condition2;}]
+		
+</trial>
+
+<trial grid_updating>
+/ pretrialpause = 200
+/ stimulusframes = [1 = partition,
+                        label1_1, label1_2, label1_3, label1_4,
+						label1_5, label1_6, label1_7, label1_8,
+                        label2_1, label2_2, label2_3, label2_4,
+						label2_5, label2_6, label2_7, label2_8]
+/ inputdevice = mouse
+/ validresponse = (label1_1, label1_2, label1_3, label1_4,
+				   label1_5, label1_6, label1_7, label1_8,
+				   label2_1, label2_2, label2_3, label2_4,
+				   label2_5, label2_6, label2_7, label2_8)
+/ recorddata = true
+
+/ branch = [if (trial.grid_updating.response == "label1_1" && values.label1_1_R !="255") {trial.select1_1;}
+	        else if (trial.grid_updating.response == "label1_1") {trial.grid_updating;}]
+/ branch = [if (trial.grid_updating.response == "label1_2" && values.label1_2_R !="255") {trial.select1_2;}
+	        else if (trial.grid_updating.response == "label1_2") {trial.grid_updating;}]
+/ branch = [if (trial.grid_updating.response == "label1_3" && values.label1_3_R !="255") {trial.select1_3;}
+	        else if (trial.grid_updating.response == "label1_3") {trial.grid_updating;}]
+/ branch = [if (trial.grid_updating.response == "label1_4" && values.label1_4_R !="255") {trial.select1_4;}
+	        else if (trial.grid_updating.response == "label1_4") {trial.grid_updating;}]
+/ branch = [if (trial.grid_updating.response == "label1_5" && values.label1_5_R !="255") {trial.select1_5;}
+	        else if (trial.grid_updating.response == "label1_5") {trial.grid_updating;}]
+/ branch = [if (trial.grid_updating.response == "label1_6" && values.label1_6_R !="255") {trial.select1_6;}
+	        else if (trial.grid_updating.response == "label1_6") {trial.grid_updating;}]
+/ branch = [if (trial.grid_updating.response == "label1_7" && values.label1_7_R !="255") {trial.select1_7;}
+	        else if (trial.grid_updating.response == "label1_7") {trial.grid_updating;}]
+/ branch = [if (trial.grid_updating.response == "label1_8" && values.label1_8_R !="255") {trial.select1_8;}
+	        else if (trial.grid_updating.response == "label1_8") {trial.grid_updating;}]
+
+/ branch = [if (trial.grid_updating.response == "label2_1" && values.label2_1_R !="255") {trial.select2_1;}
+	        else if (trial.grid_updating.response == "label2_1") {trial.grid_updating;}]
+/ branch = [if (trial.grid_updating.response == "label2_2" && values.label2_2_R !="255") {trial.select2_2;}
+	        else if (trial.grid_updating.response == "label2_2") {trial.grid_updating;}]
+/ branch = [if (trial.grid_updating.response == "label2_3" && values.label2_3_R !="255") {trial.select2_3;}
+	        else if (trial.grid_updating.response == "label2_3") {trial.grid_updating;}]
+/ branch = [if (trial.grid_updating.response == "label2_4" && values.label2_4_R !="255") {trial.select2_4;}
+	        else if (trial.grid_updating.response == "label2_4") {trial.grid_updating;}]
+/ branch = [if (trial.grid_updating.response == "label2_5" && values.label2_5_R !="255") {trial.select2_5;}
+	        else if (trial.grid_updating.response == "label2_5") {trial.grid_updating;}]
+/ branch = [if (trial.grid_updating.response == "label2_6" && values.label2_6_R !="255") {trial.select2_6;}
+	        else if (trial.grid_updating.response == "label2_6") {trial.grid_updating;}]
+/ branch = [if (trial.grid_updating.response == "label2_7" && values.label2_7_R !="255") {trial.select2_7;}
+	        else if (trial.grid_updating.response == "label2_7") {trial.grid_updating;}]
+/ branch = [if (trial.grid_updating.response == "label2_8" && values.label2_8_R !="255") {trial.select2_8;}
+	        else if (trial.grid_updating.response == "label2_8") {trial.grid_updating;}]
+		
+</trial>
+
+   Content Screen
+
+<text continue>
+/ items = ("Press the spacebar to continue")
+/ fontstyle = ("Arial", 2.34%, true, false, false, false, 5, 1)
+/ position = (50%, 75%)
+</text>
+	 
+<trial select1_1>
+/ pretrialpause = 200
+/ stimulusframes = [1 = continue, content1_1]
+/ inputdevice = keyboard
+/ validresponse = (" ")
+/ recorddata = true
+/ ontrialend = [values.stop +=1]
+/ ontrialend = [values.category1 +=1]
+/ ontrialend = [values.label1_1_R +=255]
+/ ontrialend = [values.label1_1_G +=255]
+/ ontrialend = [values.label1_1_B +=255]
+/ branch = [
+	if (values.grid <= "2") {trial.grid_induction_condition1;}
+	else if (values.grid >= "3") {trial.grid_updating;}
+]
+</trial>
+
+<trial select1_2>
+/ pretrialpause = 200
+/ stimulusframes = [1 = continue, content1_2]
+/ inputdevice = keyboard
+/ validresponse = (" ")
+/ recorddata = true
+/ ontrialend = [values.stop +=1]
+/ ontrialend = [values.category1 +=1]
+/ ontrialend = [values.label1_2_R +=255]
+/ ontrialend = [values.label1_2_G +=255]
+/ ontrialend = [values.label1_2_B +=255]
+/ branch = [
+	if (values.grid <= "2") {trial.grid_induction_condition1;}
+	else if (values.grid >= "3") {trial.grid_updating;}
+]
+</trial>
+
+<trial select1_3>
+/ pretrialpause = 200
+/ stimulusframes = [1 = continue, content1_3]
+/ inputdevice = keyboard
+/ validresponse = (" ")
+/ recorddata = true
+/ ontrialend = [values.stop +=1]
+/ ontrialend = [values.category1 +=1]
+/ ontrialend = [values.label1_3_R +=255]
+/ ontrialend = [values.label1_3_G +=255]
+/ ontrialend = [values.label1_3_B +=255]
+/ branch = [
+	if (values.grid <= "2") {trial.grid_induction_condition1;}
+	else if (values.grid >= "3") {trial.grid_updating;}
+]
+</trial>
+
+<trial select1_4>
+/ pretrialpause = 200
+/ stimulusframes = [1 = continue, content1_4]
+/ inputdevice = keyboard
+/ validresponse = (" ")
+/ recorddata = true
+/ ontrialend = [values.stop +=1]
+/ ontrialend = [values.category1 +=1]
+/ ontrialend = [values.label1_4_R +=255]
+/ ontrialend = [values.label1_4_G +=255]
+/ ontrialend = [values.label1_4_B +=255]
+/ branch = [
+	if (values.grid <= "2") {trial.grid_induction_condition1;}
+	else if (values.grid >= "3") {trial.grid_updating;}
+]
+</trial>
+
+<trial select1_5>
+/ pretrialpause = 200
+/ stimulusframes = [1 = continue, content1_5]
+/ inputdevice = keyboard
+/ validresponse = (" ")
+/ recorddata = true
+/ ontrialend = [values.stop +=1]
+/ ontrialend = [values.category1 +=1]
+/ ontrialend = [values.label1_5_R +=255]
+/ ontrialend = [values.label1_5_G +=255]
+/ ontrialend = [values.label1_5_B +=255]
+/ branch = [
+	if (values.grid <= "2") {trial.grid_induction_condition1;}
+	else if (values.grid >= "3") {trial.grid_updating;}
+]
+</trial>
+
+<trial select1_6>
+/ pretrialpause = 200
+/ stimulusframes = [1 = continue, content1_6]
+/ inputdevice = keyboard
+/ validresponse = (" ")
+/ recorddata = true
+/ ontrialend = [values.stop +=1]
+/ ontrialend = [values.category1 +=1]
+/ ontrialend = [values.label1_6_R +=255]
+/ ontrialend = [values.label1_6_G +=255]
+/ ontrialend = [values.label1_6_B +=255]
+/ branch = [
+	if (values.grid <= "2") {trial.grid_induction_condition1;}
+	else if (values.grid >= "3") {trial.grid_updating;}
+]
+</trial>
+
+<trial select1_7>
+/ pretrialpause = 200
+/ stimulusframes = [1 = continue, content1_7]
+/ inputdevice = keyboard
+/ validresponse = (" ")
+/ recorddata = true
+/ ontrialend = [values.stop +=1]
+/ ontrialend = [values.category1 +=1]
+/ ontrialend = [values.label1_7_R +=255]
+/ ontrialend = [values.label1_7_G +=255]
+/ ontrialend = [values.label1_7_B +=255]
+/ branch = [
+	if (values.grid <= "2") {trial.grid_induction_condition1;}
+	else if (values.grid >= "3") {trial.grid_updating;}
+]
+</trial>
+
+<trial select1_8>
+/ pretrialpause = 200
+/ stimulusframes = [1 = continue, content1_8]
+/ inputdevice = keyboard
+/ validresponse = (" ")
+/ recorddata = true
+/ ontrialend = [values.stop +=1]
+/ ontrialend = [values.category1 +=1]
+/ ontrialend = [values.label1_8_R +=255]
+/ ontrialend = [values.label1_8_G +=255]
+/ ontrialend = [values.label1_8_B +=255]
+/ branch = [
+	if (values.grid <= "2") {trial.grid_induction_condition1;}
+	else if (values.grid >= "3") {trial.grid_updating;}
+]
+</trial>
+
+<trial select1_9>
+/ pretrialpause = 200
+/ stimulusframes = [1 = continue, content1_9]
+/ inputdevice = keyboard
+/ validresponse = (" ")
+/ recorddata = true
+/ ontrialend = [values.stop +=1]
+/ ontrialend = [values.category1 +=1]
+/ ontrialend = [values.label1_9_R +=255]
+/ ontrialend = [values.label1_9_G +=255]
+/ ontrialend = [values.label1_9_B +=255]
+/ branch = [
+	if (values.grid <= "2") {trial.grid_induction_condition1;}
+	else if (values.grid >= "3") {trial.grid_updating;}
+]
+</trial>
+
+<trial select1_10>
+/ pretrialpause = 200
+/ stimulusframes = [1 = continue, content1_10]
+/ inputdevice = keyboard
+/ validresponse = (" ")
+/ recorddata = true
+/ ontrialend = [values.stop +=1]
+/ ontrialend = [values.category1 +=1]
+/ ontrialend = [values.label1_10_R +=255]
+/ ontrialend = [values.label1_10_G +=255]
+/ ontrialend = [values.label1_10_B +=255]
+/ branch = [
+	if (values.grid <= "2") {trial.grid_induction_condition1;}
+	else if (values.grid >= "3") {trial.grid_updating;}
+]
+</trial>
+
+<trial select1_11>
+/ pretrialpause = 200
+/ stimulusframes = [1 = continue, content1_11]
+/ inputdevice = keyboard
+/ validresponse = (" ")
+/ recorddata = true
+/ ontrialend = [values.stop +=1]
+/ ontrialend = [values.category1 +=1]
+/ ontrialend = [values.label1_11_R +=255]
+/ ontrialend = [values.label1_11_G +=255]
+/ ontrialend = [values.label1_11_B +=255]
+/ branch = [
+	if (values.grid <= "2") {trial.grid_induction_condition1;}
+	else if (values.grid >= "3") {trial.grid_updating;}
+]
+</trial>
+
+<trial select1_12>
+/ pretrialpause = 200
+/ stimulusframes = [1 = continue, content1_12]
+/ inputdevice = keyboard
+/ validresponse = (" ")
+/ recorddata = true
+/ ontrialend = [values.stop +=1]
+/ ontrialend = [values.category1 +=1]
+/ ontrialend = [values.label1_12_R +=255]
+/ ontrialend = [values.label1_12_G +=255]
+/ ontrialend = [values.label1_12_B +=255]
+/ branch = [
+	if (values.grid <= "2") {trial.grid_induction_condition1;}
+	else if (values.grid >= "3") {trial.grid_updating;}
+]
+</trial>
+
+<trial select1_13>
+/ pretrialpause = 200
+/ stimulusframes = [1 = continue, content1_13]
+/ inputdevice = keyboard
+/ validresponse = (" ")
+/ recorddata = true
+/ ontrialend = [values.stop +=1]
+/ ontrialend = [values.category1 +=1]
+/ ontrialend = [values.label1_13_R +=255]
+/ ontrialend = [values.label1_13_G +=255]
+/ ontrialend = [values.label1_13_B +=255]
+/ branch = [
+	if (values.grid <= "2") {trial.grid_induction_condition1;}
+	else if (values.grid >= "3") {trial.grid_updating;}
+]
+</trial>
+
+<trial select1_14>
+/ pretrialpause = 200
+/ stimulusframes = [1 = continue, content1_14]
+/ inputdevice = keyboard
+/ validresponse = (" ")
+/ recorddata = true
+/ ontrialend = [values.stop +=1]
+/ ontrialend = [values.category1 +=1]
+/ ontrialend = [values.label1_14_R +=255]
+/ ontrialend = [values.label1_14_G +=255]
+/ ontrialend = [values.label1_14_B +=255]
+/ branch = [
+	if (values.grid <= "2") {trial.grid_induction_condition1;}
+	else if (values.grid >= "3") {trial.grid_updating;}
+]
+</trial>
+
+<trial select1_15>
+/ pretrialpause = 200
+/ stimulusframes = [1 = continue, content1_15]
+/ inputdevice = keyboard
+/ validresponse = (" ")
+/ recorddata = true
+/ ontrialend = [values.stop +=1]
+/ ontrialend = [values.category1 +=1]
+/ ontrialend = [values.label1_15_R +=255]
+/ ontrialend = [values.label1_15_G +=255]
+/ ontrialend = [values.label1_15_B +=255]
+/ branch = [
+	if (values.grid <= "2") {trial.grid_induction_condition1;}
+	else if (values.grid >= "3") {trial.grid_updating;}
+]
+</trial>
+
+<trial select1_16>
+/ pretrialpause = 200
+/ stimulusframes = [1 = continue, content1_16]
+/ inputdevice = keyboard
+/ validresponse = (" ")
+/ recorddata = true
+/ ontrialend = [values.stop +=1]
+/ ontrialend = [values.category1 +=1]
+/ ontrialend = [values.label1_16_R +=255]
+/ ontrialend = [values.label1_16_G +=255]
+/ ontrialend = [values.label1_16_B +=255]
+/ branch = [
+	if (values.grid <= "2") {trial.grid_induction_condition1;}
+	else if (values.grid >= "3") {trial.grid_updating;}
+]
+</trial>
+
+
+<trial select2_1>
+/ pretrialpause = 200
+/ stimulusframes = [1 = continue, content2_1]
+/ inputdevice = keyboard
+/ validresponse = (" ")
+/ recorddata = true
+/ ontrialend = [values.stop +=1]
+/ ontrialend = [values.category2 +=1]
+/ ontrialend = [values.label2_1_R +=255]
+/ ontrialend = [values.label2_1_G +=255]
+/ ontrialend = [values.label2_1_B +=255]
+/ branch = [
+	if (values.grid <= "2") {trial.grid_induction_condition2;}
+	else if (values.grid >= "3") {trial.grid_updating;}
+]
+</trial>
+
+<trial select2_2>
+/ pretrialpause = 200
+/ stimulusframes = [1 = continue, content2_2]
+/ inputdevice = keyboard
+/ validresponse = (" ")
+/ recorddata = true
+/ ontrialend = [values.stop +=1]
+/ ontrialend = [values.category2 +=1]
+/ ontrialend = [values.label2_2_R +=255]
+/ ontrialend = [values.label2_2_G +=255]
+/ ontrialend = [values.label2_2_B +=255]
+/ branch = [
+	if (values.grid <= "2") {trial.grid_induction_condition2;}
+	else if (values.grid >= "3") {trial.grid_updating;}
+]
+</trial>
+
+<trial select2_3>
+/ pretrialpause = 200
+/ stimulusframes = [1 = continue, content2_3]
+/ inputdevice = keyboard
+/ validresponse = (" ")
+/ recorddata = true
+/ ontrialend = [values.stop +=1]
+/ ontrialend = [values.category2 +=1]
+/ ontrialend = [values.label2_3_R +=255]
+/ ontrialend = [values.label2_3_G +=255]
+/ ontrialend = [values.label2_3_B +=255]
+/ branch = [
+	if (values.grid <= "2") {trial.grid_induction_condition2;}
+	else if (values.grid >= "3") {trial.grid_updating;}
+]
+</trial>
+
+<trial select2_4>
+/ pretrialpause = 200
+/ stimulusframes = [1 = continue, content2_4]
+/ inputdevice = keyboard
+/ validresponse = (" ")
+/ recorddata = true
+/ ontrialend = [values.stop +=1]
+/ ontrialend = [values.category2 +=1]
+/ ontrialend = [values.label2_4_R +=255]
+/ ontrialend = [values.label2_4_G +=255]
+/ ontrialend = [values.label2_4_B +=255]
+/ branch = [
+	if (values.grid <= "2") {trial.grid_induction_condition2;}
+	else if (values.grid >= "3") {trial.grid_updating;}
+]
+</trial>
+
+<trial select2_5>
+/ pretrialpause = 200
+/ stimulusframes = [1 = continue, content2_5]
+/ inputdevice = keyboard
+/ validresponse = (" ")
+/ recorddata = true
+/ ontrialend = [values.stop +=1]
+/ ontrialend = [values.category2 +=1]
+/ ontrialend = [values.label2_5_R +=255]
+/ ontrialend = [values.label2_5_G +=255]
+/ ontrialend = [values.label2_5_B +=255]
+/ branch = [
+	if (values.grid <= "2") {trial.grid_induction_condition2;}
+	else if (values.grid >= "3") {trial.grid_updating;}
+]
+</trial>
+
+<trial select2_6>
+/ pretrialpause = 200
+/ stimulusframes = [1 = continue, content2_6]
+/ inputdevice = keyboard
+/ validresponse = (" ")
+/ recorddata = true
+/ ontrialend = [values.stop +=1]
+/ ontrialend = [values.category2 +=1]
+/ ontrialend = [values.label2_6_R +=255]
+/ ontrialend = [values.label2_6_G +=255]
+/ ontrialend = [values.label2_6_B +=255]
+/ branch = [
+	if (values.grid <= "2") {trial.grid_induction_condition2;}
+	else if (values.grid >= "3") {trial.grid_updating;}
+]
+</trial>
+
+<trial select2_7>
+/ pretrialpause = 200
+/ stimulusframes = [1 = continue, content2_7]
+/ inputdevice = keyboard
+/ validresponse = (" ")
+/ recorddata = true
+/ ontrialend = [values.stop +=1]
+/ ontrialend = [values.category2 +=1]
+/ ontrialend = [values.label2_7_R +=255]
+/ ontrialend = [values.label2_7_G +=255]
+/ ontrialend = [values.label2_7_B +=255]
+/ branch = [
+	if (values.grid <= "2") {trial.grid_induction_condition2;}
+	else if (values.grid >= "3") {trial.grid_updating;}
+]
+</trial>
+
+<trial select2_8>
+/ pretrialpause = 200
+/ stimulusframes = [1 = continue, content2_8]
+/ inputdevice = keyboard
+/ validresponse = (" ")
+/ recorddata = true
+/ ontrialend = [values.stop +=1]
+/ ontrialend = [values.category2 +=1]
+/ ontrialend = [values.label2_8_R +=255]
+/ ontrialend = [values.label2_8_G +=255]
+/ ontrialend = [values.label2_8_B +=255]
+/ branch = [
+	if (values.grid <= "2") {trial.grid_induction_condition2;}
+	else if (values.grid >= "3") {trial.grid_updating;}
+]
+</trial>
+
+<trial select2_9>
+/ pretrialpause = 200
+/ stimulusframes = [1 = continue, content2_9]
+/ inputdevice = keyboard
+/ validresponse = (" ")
+/ recorddata = true
+/ ontrialend = [values.stop +=1]
+/ ontrialend = [values.category2 +=1]
+/ ontrialend = [values.label2_9_R +=255]
+/ ontrialend = [values.label2_9_G +=255]
+/ ontrialend = [values.label2_9_B +=255]
+/ branch = [
+	if (values.grid <= "2") {trial.grid_induction_condition2;}
+	else if (values.grid >= "3") {trial.grid_updating;}
+]
+</trial>
+
+<trial select2_10>
+/ pretrialpause = 200
+/ stimulusframes = [1 = continue, content2_10]
+/ inputdevice = keyboard
+/ validresponse = (" ")
+/ recorddata = true
+/ ontrialend = [values.stop +=1]
+/ ontrialend = [values.category2 +=1]
+/ ontrialend = [values.label2_10_R +=255]
+/ ontrialend = [values.label2_10_G +=255]
+/ ontrialend = [values.label2_10_B +=255]
+/ branch = [
+	if (values.grid <= "2") {trial.grid_induction_condition2;}
+	else if (values.grid >= "3") {trial.grid_updating;}
+]
+</trial>
+
+<trial select2_11>
+/ pretrialpause = 200
+/ stimulusframes = [1 = continue, content2_11]
+/ inputdevice = keyboard
+/ validresponse = (" ")
+/ recorddata = true
+/ ontrialend = [values.stop +=1]
+/ ontrialend = [values.category2 +=1]
+/ ontrialend = [values.label2_11_R +=255]
+/ ontrialend = [values.label2_11_G +=255]
+/ ontrialend = [values.label2_11_B +=255]
+/ branch = [
+	if (values.grid <= "2") {trial.grid_induction_condition2;}
+	else if (values.grid >= "3") {trial.grid_updating;}
+]
+</trial>
+
+<trial select2_12>
+/ pretrialpause = 200
+/ stimulusframes = [1 = continue, content2_12]
+/ inputdevice = keyboard
+/ validresponse = (" ")
+/ recorddata = true
+/ ontrialend = [values.stop +=1]
+/ ontrialend = [values.category2 +=1]
+/ ontrialend = [values.label2_12_R +=255]
+/ ontrialend = [values.label2_12_G +=255]
+/ ontrialend = [values.label2_12_B +=255]
+/ branch = [
+	if (values.grid <= "2") {trial.grid_induction_condition2;}
+	else if (values.grid >= "3") {trial.grid_updating;}
+]
+</trial>
+
+<trial select2_13>
+/ pretrialpause = 200
+/ stimulusframes = [1 = continue, content2_13]
+/ inputdevice = keyboard
+/ validresponse = (" ")
+/ recorddata = true
+/ ontrialend = [values.stop +=1]
+/ ontrialend = [values.category2 +=1]
+/ ontrialend = [values.label2_13_R +=255]
+/ ontrialend = [values.label2_13_G +=255]
+/ ontrialend = [values.label2_13_B +=255]
+/ branch = [
+	if (values.grid <= "2") {trial.grid_induction_condition2;}
+	else if (values.grid >= "3") {trial.grid_updating;}
+]
+</trial>
+
+<trial select2_14>
+/ pretrialpause = 200
+/ stimulusframes = [1 = continue, content2_14]
+/ inputdevice = keyboard
+/ validresponse = (" ")
+/ recorddata = true
+/ ontrialend = [values.stop +=1]
+/ ontrialend = [values.category2 +=1]
+/ ontrialend = [values.label2_14_R +=255]
+/ ontrialend = [values.label2_14_G +=255]
+/ ontrialend = [values.label2_14_B +=255]
+/ branch = [
+	if (values.grid <= "2") {trial.grid_induction_condition2;}
+	else if (values.grid >= "3") {trial.grid_updating;}
+]
+</trial>
+
+<trial select2_15>
+/ pretrialpause = 200
+/ stimulusframes = [1 = continue, content2_15]
+/ inputdevice = keyboard
+/ validresponse = (" ")
+/ recorddata = true
+/ ontrialend = [values.stop +=1]
+/ ontrialend = [values.category2 +=1]
+/ ontrialend = [values.label2_15_R +=255]
+/ ontrialend = [values.label2_15_G +=255]
+/ ontrialend = [values.label2_15_B +=255]
+/ branch = [
+	if (values.grid <= "2") {trial.grid_induction_condition2;}
+	else if (values.grid >= "3") {trial.grid_updating;}
+]
+</trial>
+
+<trial select2_16>
+/ pretrialpause = 200
+/ stimulusframes = [1 = continue, content2_16]
+/ inputdevice = keyboard
+/ validresponse = (" ")
+/ recorddata = true
+/ ontrialend = [values.stop +=1]
+/ ontrialend = [values.category1 +=1]
+/ ontrialend = [values.label2_16_R +=255]
+/ ontrialend = [values.label2_16_G +=255]
+/ ontrialend = [values.label2_16_B +=255]
+/ branch = [
+	if (values.grid <= "2") {trial.grid_induction_condition2;}
+	else if (values.grid >= "3") {trial.grid_updating;}
+]
+</trial>
+
+   Selective Interrogation Task ................................................................
+   
+      This section compiles the relevant sections of the experimental task. Here the program
+	  instructs the selection of new stimuli for each new Grid Screen, and the presentation of
+	  a new Grid Screen once half of the available stimuli have been selected. 	  
+
+   Summary Data Values
+   
+<values mechanics>
+
+/ stop = 0
+/ grid = 0
+
+/ condition = 0
+
+/ category1 = 0
+/ category2 = 0
+
+/ category1_grid1 = 0
+/ category2_grid1 = 0
+/ indexscore_grid1 = 0
+
+/ category1_grid2 = 0
+/ category2_grid2 = 0
+/ indexscore_grid2 = 0
+
+/ category1_grid3 = 0
+/ category2_grid3 = 0
+/ indexscore_grid3 = 0
+
+/ category1_grid4 = 0
+/ category2_grid4 = 0
+/ indexscore_grid4 = 0
+
+/ category1_total = 0
+/ category2_total = 0
+/ indexscore_total = 0
+
+</values>
+
+   Induction Phase Stimuli Selection
+
+<trial induction_stimuli1>
+/ trialduration = 1
+/ ontrialbegin = [if (values.condition == 1) {values.label1_1=list.labelcategory1.nextvalue; values.content1_1=list.contentcategory1.nextvalue;}
+             else if (values.condition == 2) {values.label2_1=list.labelcategory2.nextvalue; values.content2_1=list.contentcategory2.nextvalue;}]
+</trial>
+
+<trial induction_stimuli2>
+/ trialduration = 1
+/ ontrialbegin = [if (values.condition == 1) {values.label1_2=list.labelcategory1.nextvalue; values.content1_2=list.contentcategory1.nextvalue;}
+             else if (values.condition == 2) {values.label2_2=list.labelcategory2.nextvalue; values.content2_2=list.contentcategory2.nextvalue;}]
+</trial>
+
+<trial induction_stimuli3>
+/ trialduration = 1
+/ ontrialbegin = [if (values.condition == 1) {values.label1_3=list.labelcategory1.nextvalue; values.content1_3=list.contentcategory1.nextvalue;}
+             else if (values.condition == 2) {values.label2_3=list.labelcategory2.nextvalue; values.content2_3=list.contentcategory2.nextvalue;}]
+</trial>
+
+<trial induction_stimuli4>
+/ trialduration = 1
+/ ontrialbegin = [if (values.condition == 1) {values.label1_4=list.labelcategory1.nextvalue; values.content1_4=list.contentcategory1.nextvalue;}
+             else if (values.condition == 2) {values.label2_4=list.labelcategory2.nextvalue; values.content2_4=list.contentcategory2.nextvalue;}]
+</trial>
+
+<trial induction_stimuli5>
+/ trialduration = 1
+/ ontrialbegin = [if (values.condition == 1) {values.label1_5=list.labelcategory1.nextvalue; values.content1_5=list.contentcategory1.nextvalue;}
+             else if (values.condition == 2) {values.label2_5=list.labelcategory2.nextvalue; values.content2_5=list.contentcategory2.nextvalue;}]
+</trial>
+
+<trial induction_stimuli6>
+/ trialduration = 1
+/ ontrialbegin = [if (values.condition == 1) {values.label1_6=list.labelcategory1.nextvalue; values.content1_6=list.contentcategory1.nextvalue;}
+             else if (values.condition == 2) {values.label2_6=list.labelcategory2.nextvalue; values.content2_6=list.contentcategory2.nextvalue;}]
+</trial>
+
+<trial induction_stimuli7>
+/ trialduration = 1
+/ ontrialbegin = [if (values.condition == 1) {values.label1_7=list.labelcategory1.nextvalue; values.content1_7=list.contentcategory1.nextvalue;}
+             else if (values.condition == 2) {values.label2_7=list.labelcategory2.nextvalue; values.content2_7=list.contentcategory2.nextvalue;}]
+</trial>
+
+<trial induction_stimuli8>
+/ trialduration = 1
+/ ontrialbegin = [if (values.condition == 1) {values.label1_8=list.labelcategory1.nextvalue; values.content1_8=list.contentcategory1.nextvalue;}
+             else if (values.condition == 2) {values.label2_8=list.labelcategory2.nextvalue; values.content2_8=list.contentcategory2.nextvalue;}]
+</trial>
+
+<trial induction_stimuli9>
+/ trialduration = 1
+/ ontrialbegin = [if (values.condition == 1) {values.label1_9=list.labelcategory1.nextvalue; values.content1_9=list.contentcategory1.nextvalue;}
+             else if (values.condition == 2) {values.label2_9=list.labelcategory2.nextvalue; values.content2_9=list.contentcategory2.nextvalue;}]
+</trial>
+
+<trial induction_stimuli10>
+/ trialduration = 1
+/ ontrialbegin = [if (values.condition == 1) {values.label1_10=list.labelcategory1.nextvalue; values.content1_10=list.contentcategory1.nextvalue;}
+             else if (values.condition == 2) {values.label2_10=list.labelcategory2.nextvalue; values.content2_10=list.contentcategory2.nextvalue;}]
+</trial>
+
+<trial induction_stimuli11>
+/ trialduration = 1
+/ ontrialbegin = [if (values.condition == 1) {values.label1_11=list.labelcategory1.nextvalue; values.content1_11=list.contentcategory1.nextvalue;}
+             else if (values.condition == 2) {values.label2_11=list.labelcategory2.nextvalue; values.content2_11=list.contentcategory2.nextvalue;}]
+</trial>
+
+<trial induction_stimuli12>
+/ trialduration = 1
+/ ontrialbegin = [if (values.condition == 1) {values.label1_12=list.labelcategory1.nextvalue; values.content1_12=list.contentcategory1.nextvalue;}
+             else if (values.condition == 2) {values.label2_12=list.labelcategory2.nextvalue; values.content2_12=list.contentcategory2.nextvalue;}]
+</trial>
+
+<trial induction_stimuli13>
+/ trialduration = 1
+/ ontrialbegin = [if (values.condition == 1) {values.label1_13=list.labelcategory1.nextvalue; values.content1_13=list.contentcategory1.nextvalue;}
+             else if (values.condition == 2) {values.label2_13=list.labelcategory2.nextvalue; values.content2_13=list.contentcategory2.nextvalue;}]
+</trial>
+
+<trial induction_stimuli14>
+/ trialduration = 1
+/ ontrialbegin = [if (values.condition == 1) {values.label1_14=list.labelcategory1.nextvalue; values.content1_14=list.contentcategory1.nextvalue;}
+             else if (values.condition == 2) {values.label2_14=list.labelcategory2.nextvalue; values.content2_14=list.contentcategory2.nextvalue;}]
+</trial>
+
+<trial induction_stimuli15>
+/ trialduration = 1
+/ ontrialbegin = [if (values.condition == 1) {values.label1_15=list.labelcategory1.nextvalue; values.content1_15=list.contentcategory1.nextvalue;}
+             else if (values.condition == 2) {values.label2_15=list.labelcategory2.nextvalue; values.content2_15=list.contentcategory2.nextvalue;}]
+</trial>
+
+<trial induction_stimuli16>
+/ trialduration = 1
+/ ontrialbegin = [if (values.condition == 1) {values.label1_16=list.labelcategory1.nextvalue; values.content1_16=list.contentcategory1.nextvalue;}
+             else if (values.condition == 2) {values.label2_16=list.labelcategory2.nextvalue; values.content2_16=list.contentcategory2.nextvalue;}]
+/ branch = [
+	if (values.condition == 1) {trial.grid_induction_condition1;}
+	else if (values.condition == 2) {trial.grid_induction_condition2;}]		 
+</trial>
+
+   Updating Phase Stimuli Selection 
+
+<trial updating_stimuli1>
+/ trialduration = 1
+/ ontrialbegin = [values.label1_1=list.labelcategory1.nextvalue; values.content1_1=list.contentcategory1.nextvalue;
+				  values.label2_1=list.labelcategory2.nextvalue; values.content2_1=list.contentcategory2.nextvalue]
+</trial>
+
+<trial updating_stimuli2>
+/ trialduration = 1
+/ ontrialbegin = [values.label1_2=list.labelcategory1.nextvalue; values.content1_2=list.contentcategory1.nextvalue;
+				  values.label2_2=list.labelcategory2.nextvalue; values.content2_2=list.contentcategory2.nextvalue]
+</trial>
+
+<trial updating_stimuli3>
+/ trialduration = 1
+/ ontrialbegin = [values.label1_3=list.labelcategory1.nextvalue; values.content1_3=list.contentcategory1.nextvalue;
+				  values.label2_3=list.labelcategory2.nextvalue; values.content2_3=list.contentcategory2.nextvalue]
+</trial>
+
+<trial updating_stimuli4>
+/ trialduration = 1
+/ ontrialbegin = [values.label1_4=list.labelcategory1.nextvalue; values.content1_4=list.contentcategory1.nextvalue;
+				  values.label2_4=list.labelcategory2.nextvalue; values.content2_4=list.contentcategory2.nextvalue]
+</trial>
+
+<trial updating_stimuli5>
+/ trialduration = 1
+/ ontrialbegin = [values.label1_5=list.labelcategory1.nextvalue; values.content1_5=list.contentcategory1.nextvalue;
+				  values.label2_5=list.labelcategory2.nextvalue; values.content2_5=list.contentcategory2.nextvalue]
+</trial>
+
+<trial updating_stimuli6>
+/ trialduration = 1
+/ ontrialbegin = [values.label1_6=list.labelcategory1.nextvalue; values.content1_6=list.contentcategory1.nextvalue;
+				  values.label2_6=list.labelcategory2.nextvalue; values.content2_6=list.contentcategory2.nextvalue]
+</trial>
+
+<trial updating_stimuli7>
+/ trialduration = 1
+/ ontrialbegin = [values.label1_7=list.labelcategory1.nextvalue; values.content1_7=list.contentcategory1.nextvalue;
+				  values.label2_7=list.labelcategory2.nextvalue; values.content2_7=list.contentcategory2.nextvalue]
+</trial>
+
+<trial updating_stimuli8>
+/ trialduration = 1
+/ ontrialbegin = [values.label1_8=list.labelcategory1.nextvalue; values.content1_8=list.contentcategory1.nextvalue;
+				  values.label2_8=list.labelcategory2.nextvalue; values.content2_8=list.contentcategory2.nextvalue]
+</trial>
+
+  Task Blocks 
+
+<block taskinstructions>
+/ trials = [1 = taskinstructions]
+</block>
+
+<block induction>
+/ onblockbegin = [values.stop = 0; values.grid += 1]
+/ onblockbegin = [values.category1 = 0; values.category2 = 0]
+
+/ onblockbegin = [
+                  values.label1_1_R = 0; values.label1_1_G = 0; values.label1_1_B = 0;
+				  values.label1_2_R = 0; values.label1_2_G = 0; values.label1_2_B = 0;
+				  values.label1_3_R = 0; values.label1_3_G = 0; values.label1_3_B = 0;
+				  values.label1_4_R = 0; values.label1_4_G = 0; values.label1_4_B = 0;
+				  values.label1_5_R = 0; values.label1_5_G = 0; values.label1_5_B = 0;
+				  values.label1_6_R = 0; values.label1_6_G = 0; values.label1_6_B = 0;
+				  values.label1_7_R = 0; values.label1_7_G = 0; values.label1_7_B = 0;
+				  values.label1_8_R = 0; values.label1_8_G = 0; values.label1_8_B = 0;
+				  values.label1_9_R = 0; values.label1_9_G = 0; values.label1_9_B = 0;
+				  values.label1_10_R = 0; values.label1_10_G = 0; values.label1_10_B = 0;
+				  values.label1_11_R = 0; values.label1_11_G = 0; values.label1_11_B = 0;
+				  values.label1_12_R = 0; values.label1_12_G = 0; values.label1_12_B = 0;
+				  values.label1_13_R = 0; values.label1_13_G = 0; values.label1_13_B = 0;
+				  values.label1_14_R = 0; values.label1_14_G = 0; values.label1_14_B = 0;
+				  values.label1_15_R = 0; values.label1_15_G = 0; values.label1_15_B = 0;
+				  values.label1_16_R = 0; values.label1_16_G = 0; values.label1_16_B = 0;
+				  
+				  values.label2_1_R = 0; values.label2_1_G = 0; values.label2_1_B = 0;
+				  values.label2_2_R = 0; values.label2_2_G = 0; values.label2_2_B = 0;
+				  values.label2_3_R = 0; values.label2_3_G = 0; values.label2_3_B = 0;
+				  values.label2_4_R = 0; values.label2_4_G = 0; values.label2_4_B = 0;
+				  values.label2_5_R = 0; values.label2_5_G = 0; values.label2_5_B = 0;
+				  values.label2_6_R = 0; values.label2_6_G = 0; values.label2_6_B = 0;
+				  values.label2_7_R = 0; values.label2_7_G = 0; values.label2_7_B = 0;
+				  values.label2_8_R = 0; values.label2_8_G = 0; values.label2_8_B = 0;
+				  values.label2_9_R = 0; values.label2_9_G = 0; values.label2_9_B = 0;
+				  values.label2_10_R = 0; values.label2_10_G = 0; values.label2_10_B = 0;
+				  values.label2_11_R = 0; values.label2_11_G = 0; values.label2_11_B = 0;
+				  values.label2_12_R = 0; values.label2_12_G = 0; values.label2_12_B = 0;
+				  values.label2_13_R = 0; values.label2_13_G = 0; values.label2_13_B = 0;
+				  values.label2_14_R = 0; values.label2_14_G = 0; values.label2_14_B = 0;
+				  values.label2_15_R = 0; values.label2_15_G = 0; values.label2_15_B = 0;
+				  values.label2_16_R = 0; values.label2_16_G = 0; values.label2_16_B = 0;
+				  ]
+/ onblockbegin = [
+	if (values.condition == 1) {
+		          values.label1_1_Xposition=list.positionx.nextvalue; values.label1_1_Yposition=list.positiony.nextvalue;
+				  values.label1_2_Xposition=list.positionx.nextvalue; values.label1_2_Yposition=list.positiony.nextvalue;
+				  values.label1_3_Xposition=list.positionx.nextvalue; values.label1_3_Yposition=list.positiony.nextvalue;
+				  values.label1_4_Xposition=list.positionx.nextvalue; values.label1_4_Yposition=list.positiony.nextvalue;
+				  values.label1_5_Xposition=list.positionx.nextvalue; values.label1_5_Yposition=list.positiony.nextvalue;
+				  values.label1_6_Xposition=list.positionx.nextvalue; values.label1_6_Yposition=list.positiony.nextvalue;
+				  values.label1_7_Xposition=list.positionx.nextvalue; values.label1_7_Yposition=list.positiony.nextvalue;
+				  values.label1_8_Xposition=list.positionx.nextvalue; values.label1_8_Yposition=list.positiony.nextvalue;
+				  values.label1_9_Xposition=list.positionx.nextvalue; values.label1_9_Yposition=list.positiony.nextvalue;
+				  values.label1_10_Xposition=list.positionx.nextvalue; values.label1_10_Yposition=list.positiony.nextvalue;
+				  values.label1_11_Xposition=list.positionx.nextvalue; values.label1_11_Yposition=list.positiony.nextvalue;
+				  values.label1_12_Xposition=list.positionx.nextvalue; values.label1_12_Yposition=list.positiony.nextvalue;
+				  values.label1_13_Xposition=list.positionx.nextvalue; values.label1_13_Yposition=list.positiony.nextvalue;
+				  values.label1_14_Xposition=list.positionx.nextvalue; values.label1_14_Yposition=list.positiony.nextvalue;
+				  values.label1_15_Xposition=list.positionx.nextvalue; values.label1_15_Yposition=list.positiony.nextvalue;
+				  values.label1_16_Xposition=list.positionx.nextvalue; values.label1_16_Yposition=list.positiony.nextvalue;
+				  
+	} else if (values.condition == 2) {
+		          values.label2_1_Xposition=list.positionx.nextvalue; values.label2_1_Yposition=list.positiony.nextvalue;
+				  values.label2_2_Xposition=list.positionx.nextvalue; values.label2_2_Yposition=list.positiony.nextvalue;
+				  values.label2_3_Xposition=list.positionx.nextvalue; values.label2_3_Yposition=list.positiony.nextvalue;
+				  values.label2_4_Xposition=list.positionx.nextvalue; values.label2_4_Yposition=list.positiony.nextvalue;
+				  values.label2_5_Xposition=list.positionx.nextvalue; values.label2_5_Yposition=list.positiony.nextvalue;
+				  values.label2_6_Xposition=list.positionx.nextvalue; values.label2_6_Yposition=list.positiony.nextvalue;
+				  values.label2_7_Xposition=list.positionx.nextvalue; values.label2_7_Yposition=list.positiony.nextvalue;
+				  values.label2_8_Xposition=list.positionx.nextvalue; values.label2_8_Yposition=list.positiony.nextvalue;
+				  values.label2_9_Xposition=list.positionx.nextvalue; values.label2_9_Yposition=list.positiony.nextvalue;
+				  values.label2_10_Xposition=list.positionx.nextvalue; values.label2_10_Yposition=list.positiony.nextvalue;
+				  values.label2_11_Xposition=list.positionx.nextvalue; values.label2_11_Yposition=list.positiony.nextvalue;
+				  values.label2_12_Xposition=list.positionx.nextvalue; values.label2_12_Yposition=list.positiony.nextvalue;
+				  values.label2_13_Xposition=list.positionx.nextvalue; values.label2_13_Yposition=list.positiony.nextvalue;
+				  values.label2_14_Xposition=list.positionx.nextvalue; values.label2_14_Yposition=list.positiony.nextvalue;
+				  values.label2_15_Xposition=list.positionx.nextvalue; values.label2_15_Yposition=list.positiony.nextvalue;
+				  values.label2_16_Xposition=list.positionx.nextvalue; values.label2_16_Yposition=list.positiony.nextvalue
+	}
+]
+/ trials = [1 = newgrid;
+            2 = sequence(trial.induction_stimuli1, 
+			             trial.induction_stimuli2,
+						 trial.induction_stimuli3, 
+						 trial.induction_stimuli4,
+						 trial.induction_stimuli5,
+						 trial.induction_stimuli6,
+						 trial.induction_stimuli7,
+						 trial.induction_stimuli8,
+						 trial.induction_stimuli9, 
+			             trial.induction_stimuli10,
+						 trial.induction_stimuli11, 
+						 trial.induction_stimuli12,
+						 trial.induction_stimuli13,
+						 trial.induction_stimuli14,
+						 trial.induction_stimuli15,
+						 trial.induction_stimuli16);]			
+/ recorddata = true
+/ stop = [values.stop > 7]
+/ onblockend = [if (values.grid == 1) {values.category1_grid1 = values.category1; values.category2_grid1 = values.category2;}
+	       else if (values.grid == 2) {values.category1_grid2 = values.category1; values.category2_grid2 = values.category2;}
+		   else if (values.grid == 3) {values.category1_grid3 = values.category1; values.category2_grid3 = values.category2;}
+		   else if (values.grid == 4) {values.category1_grid4 = values.category1; values.category2_grid4 = values.category2;}]
+
+</block>
+
+<block updating>
+/ onblockbegin = [values.stop = 0; values.grid += 1]
+/ onblockbegin = [values.category1 = 0; values.category2 = 0]
+
+/ onblockbegin = [values.label1_1_R = 0; values.label1_1_G = 0; values.label1_1_B = 0;
+				  values.label1_2_R = 0; values.label1_2_G = 0; values.label1_2_B = 0;
+				  values.label1_3_R = 0; values.label1_3_G = 0; values.label1_3_B = 0;
+				  values.label1_4_R = 0; values.label1_4_G = 0; values.label1_4_B = 0;
+				  values.label1_5_R = 0; values.label1_5_G = 0; values.label1_5_B = 0;
+				  values.label1_6_R = 0; values.label1_6_G = 0; values.label1_6_B = 0;
+				  values.label1_7_R = 0; values.label1_7_G = 0; values.label1_7_B = 0;
+				  values.label1_8_R = 0; values.label1_8_G = 0; values.label1_8_B = 0;
+				  
+				  values.label2_1_R = 0; values.label2_1_G = 0; values.label2_1_B = 0;
+				  values.label2_2_R = 0; values.label2_2_G = 0; values.label2_2_B = 0;
+				  values.label2_3_R = 0; values.label2_3_G = 0; values.label2_3_B = 0;
+				  values.label2_4_R = 0; values.label2_4_G = 0; values.label2_4_B = 0;
+				  values.label2_5_R = 0; values.label2_5_G = 0; values.label2_5_B = 0;
+				  values.label2_6_R = 0; values.label2_6_G = 0; values.label2_6_B = 0;
+				  values.label2_7_R = 0; values.label2_7_G = 0; values.label2_7_B = 0;
+				  values.label2_8_R = 0; values.label2_8_G = 0; values.label2_8_B = 0]
+/ onblockbegin = [values.label1_1_Xposition=list.positionx.nextvalue; values.label1_1_Yposition=list.positiony.nextvalue;
+				  values.label1_2_Xposition=list.positionx.nextvalue; values.label1_2_Yposition=list.positiony.nextvalue;
+				  values.label1_3_Xposition=list.positionx.nextvalue; values.label1_3_Yposition=list.positiony.nextvalue;
+				  values.label1_4_Xposition=list.positionx.nextvalue; values.label1_4_Yposition=list.positiony.nextvalue;
+				  values.label1_5_Xposition=list.positionx.nextvalue; values.label1_5_Yposition=list.positiony.nextvalue;
+				  values.label1_6_Xposition=list.positionx.nextvalue; values.label1_6_Yposition=list.positiony.nextvalue;
+				  values.label1_7_Xposition=list.positionx.nextvalue; values.label1_7_Yposition=list.positiony.nextvalue;
+				  values.label1_8_Xposition=list.positionx.nextvalue; values.label1_8_Yposition=list.positiony.nextvalue;
+				  
+				  values.label2_1_Xposition=list.positionx.nextvalue; values.label2_1_Yposition=list.positiony.nextvalue;
+				  values.label2_2_Xposition=list.positionx.nextvalue; values.label2_2_Yposition=list.positiony.nextvalue;
+				  values.label2_3_Xposition=list.positionx.nextvalue; values.label2_3_Yposition=list.positiony.nextvalue;
+				  values.label2_4_Xposition=list.positionx.nextvalue; values.label2_4_Yposition=list.positiony.nextvalue;
+				  values.label2_5_Xposition=list.positionx.nextvalue; values.label2_5_Yposition=list.positiony.nextvalue;
+				  values.label2_6_Xposition=list.positionx.nextvalue; values.label2_6_Yposition=list.positiony.nextvalue;
+				  values.label2_7_Xposition=list.positionx.nextvalue; values.label2_7_Yposition=list.positiony.nextvalue;
+				  values.label2_8_Xposition=list.positionx.nextvalue; values.label2_8_Yposition=list.positiony.nextvalue]
+/ trials = [1 = newgrid;
+            2 = sequence(trial.updating_stimuli1, 
+			             trial.updating_stimuli2,
+						 trial.updating_stimuli3, 
+						 trial.updating_stimuli4,
+						 trial.updating_stimuli5,
+						 trial.updating_stimuli6,
+						 trial.updating_stimuli7,
+						 trial.updating_stimuli8);
+			3 = grid_updating]
+/ recorddata = true
+/ stop = [values.stop > 7]
+/ onblockend = [if (values.grid == 1) {values.category1_grid1 = values.category1; values.category2_grid1 = values.category2;}
+	       else if (values.grid == 2) {values.category1_grid2 = values.category1; values.category2_grid2 = values.category2;}
+		   else if (values.grid == 3) {values.category1_grid3 = values.category1; values.category2_grid3 = values.category2;}
+		   else if (values.grid == 4) {values.category1_grid4 = values.category1; values.category2_grid4 = values.category2;}]
+
+</block>
+
+
+<block endtask>
+/ onblockbegin = [values.category1_total = (values.category1_grid1 + values.category1_grid2 + values.category1_grid3 + values.category1_grid4);
+                  values.category2_total = (values.category2_grid1 + values.category2_grid2 + values.category2_grid3 + values.category2_grid4)]
+/ trials = [1 = endtask]
+/ onblockend = [values.indexscore_grid1 = values.category1_grid1 / (values.category1_grid1 + values.category2_grid1);
+				values.indexscore_grid2 = values.category1_grid2 / (values.category1_grid2 + values.category2_grid2);
+				values.indexscore_grid3 = values.category1_grid3 / (values.category1_grid3 + values.category2_grid3);
+				values.indexscore_grid4 = values.category1_grid4 / (values.category1_grid4 + values.category2_grid4);
+				values.indexscore_total = values.category1_total / (values.category1_total + values.category2_total)]
+</block>
+
+  Experiment Structure & Condition Allocation ..................................................
+  
+  The structure of the experimental session (i.e., order in which the Induction Phase and 
+  Updating Phase are delivered) is defined using the expt element below. If you wish to add 
+  additional assessments or tasks to the experimental session, such as interleaving an 
+  assessment between the Phases, this can be done below. 
+  
+  Additionally, assignment to Condition 1 or Condition 2 is defined using the below expt 
+  element. Participants can be assigned to e Condition based on the numeric subject id entered 
+  when launching the script, or by random assignment. In this template code, random assignment
+  is used. If you wish to assign participants based on their subject id number, change the 
+  groupassignment attribute below from 'random' to 'subjectnumber'. Doing so will assign each 
+  participant with an odd-numbered subject id to Condition 1 and each with an even-numbered 
+  subject id to Condition 2.
+   
+<expt condition1>
+/ subjects = (1 of 2)
+/ groupassignment = random
+/ onexptbegin = [values.condition=1;]
+/ blocks = [1 = taskinstructions;
+            2-3 = induction;
+			4-5 = updating;
+			6 = endtask]
+</expt>
+
+<expt condition2>
+/ subjects = (2 of 2)
+/ groupassignment = random
+/ onexptbegin = [values.condition = 2;]
+/ blocks = [1 = taskinstructions;
+            2-3 = induction;
+			4-5 = updating;
+			6 = endtask]
+</expt>
+
+
+================================================================================================
+
+Data Files
+											  
+================================================================================================
+  
+  Raw Data .....................................................................................
+
+<data>
+/ columns = (date, 
+             time,
+			 subject,
+			 blocknum,
+			 blockcode,
+			 trialnum,
+			 trialcode,
+			 trialduration,
+			 response,
+			 latency,
+			 stimulusitem,
+			 stimulusitem,
+			 stimulusitem,
+			 stimulusitem,
+			 stimulusitem,
+			 stimulusitem,
+			 stimulusitem,
+			 stimulusitem,
+			 stimulusitem,
+			 stimulusitem,
+			 stimulusitem,
+			 stimulusitem,
+			 stimulusitem,
+			 stimulusitem,
+			 stimulusitem,
+			 stimulusitem,
+			 stimulusitem)
+/ encrypt = false
+/ separatefiles = true
+</data>
+
+  Summary Data .................................................................................
+
+<summarydata>
+/ columns = (script.startdate, 
+             script.starttime,
+			 script.subjectid,
+			 
+			 values.condition,
+			 
+			 values.category1_grid1,
+			 values.category2_grid1,
+			 values.indexscore_grid1,
+			 
+			 values.category1_grid2,
+			 values.category2_grid2,
+			 values.indexscore_grid2,
+
+			 values.category1_grid3,
+			 values.category2_grid3,
+			 values.indexscore_grid3,
+			 
+			 values.category1_grid4,
+			 values.category2_grid4,
+			 values.indexscore_grid4,
+			 
+			 values.category1_total,
+			 values.category2_total,
+			 values.indexscore_total)
+/ encrypt = false
+/ separatefiles = false
+</summarydata>
+
+  To toggle separate files for each participant set separatefiles attribute to true or false.
+
+================================================================================================
+
+End
+
+================================================================================================

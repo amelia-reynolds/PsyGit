@@ -18,6 +18,6 @@ Additionally, the following files, which are all available to download from this
 <br>
 (2) <b>SelectIntTask_Stimuli.csv</b>
 <br>
-(2) <b>SelectIntTask_Instructions.txt</b>
+(2) <b>SelectIntTask_Instructions.csv</b>
 <br><br>
 <b>Contact Information:</b> For additional information, error reporting, or assistance with modifying the template code, please contact script author, Amelia Reynolds at <a href="mailto:arreynolds.research@gmail.com">arreynolds.research@gmail.com</a>.

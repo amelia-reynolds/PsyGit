@@ -1,4 +1,0 @@
-In this task you will read short passages describing [insert event or topic of interest]. You will be asked to select the passages you read from a pool of available options.
-The task will present 4 screens, each of which will display 16 passage options. The options will be represented by a label indicating the [insert label stimuli] described in the corresponding passage. To select a passage you want to read, click the label using the mouse.
-Once you select a label, the passage will then be presented for you to read in full. Please ensure you read the passage carefully. Then, click the 'continue' button. You will only be able to read half the available passage options on each screen. Once you have read half the available options on the screen, the screen will be refreshed, and new options will be presented.
-When you are ready, click start below.

@@ -65,6 +65,7 @@
     author, Amelia Reynolds, via email: arreynolds.research@gmail.com
 """
 
+
 # Import Packages-------------------------------------
 
 import os
@@ -187,7 +188,7 @@ def wrapText(text, x, y, size, color, bold, wrapwidth):
     
 # Event Handling-------------------------------------
 
-def handleEvent():
+def handleEvent(): # function to mouse clicks
     global running, clickPos
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -203,7 +204,7 @@ def handleEvent():
                 return True
     return False
 
-def updateInfo(key,value):
+def updateInfo(key,value): # function to update task information
     global taskInfo, stimList, gridCount, startTime, clickTime
     taskInfo[key] = value
     if key == 'activeLabel':
@@ -215,15 +216,9 @@ def updateInfo(key,value):
                 taskInfo['latencyLabel'] = int((clickTime.timestamp()-startTime.timestamp())*1000)
                 break
 
-def updateCount():
-    global subsetIndex, subsetTotal, clickCount, gridCount
-    subsetIndex += subsetTotal
-    clickCount = 0
-    gridCount += 1
-
 # Task Stimuli----------------------------------------
 
-def createStim(path):
+def createStim(path): # function to generate Label & Content stimuli
     global stimList, stimTotal, subsetTotal, categoryDict, categoryCount, categoryTotal, labelList, error, errorText
     # initialise global variables
     stimList = []
@@ -250,8 +245,8 @@ def createStim(path):
             batch = [] 
             for category, stimuli in categoryDict.items():
                 batch.extend(stimuli[i:i+subsetCount])
-                random.shuffle(batch)
-                stimList.extend(batch)
+            random.shuffle(batch)
+            stimList.extend(batch)
         labelList = [stimulus[1] for stimulus in stimList] 
         stimTotal = len(labelList)
     except FileNotFoundError: 
@@ -259,47 +254,50 @@ def createStim(path):
         error = True
         errorText = (f"Error: {path} file not found, unable to load task stimuli. Please ensure the {path} file is saved in the same location as Python script.")
 
-def subsetStim():
-    global subsetTotal, subsetIndex, labelList, gridList, gridCount, clickCount, running
+def subsetStim(): # function to subset Label stimuli for Grid screens
+    global subsetTotal, subsetIndex, labelList, gridList, gridCount, clickCount, running, state
     
-    if subsetIndex >= len(labelList):
-        runAlert(promptText['End_Alert'],2500)
-        running = False
+    if subsetIndex >= len(labelList):  
+        if gridCount == len(labelList) // subsetTotal:  
+            runAlert(promptText['End_Alert'], 2500)
+            state = 'end'
+        return
 
-    else:
-        runAlert(promptText['Grid_Alert'],2500)
-        gridStim = labelList[subsetIndex:(subsetIndex+subsetTotal)]
-        gridPos = []
-        xPos = [int(winWidth*0.2), int(winWidth*0.4), int(winWidth*0.6), int(winWidth*0.8)]
-        yPos = [int(winHeight*0.25), int(winHeight*0.45), int(winHeight*0.65), int(winHeight*0.85)]
-        for y in yPos:
-            for x in xPos:
-                gridPos.append((x,y))
-                gridList = []
-                for pos, label in zip(gridPos, gridStim):
-                    font = pygame.font.SysFont('Calibri', int(winHeight*0.025), False)
-                    labelText = font.render(label, True, (0, 0, 0)) 
-                    labelTextbox = labelText.get_rect(center=(pos))
-                    gridList.append((label, labelText, labelTextbox))
-        updateCount()
+    runAlert(promptText['Grid_Alert'],2500)
+    gridStim = labelList[subsetIndex:(subsetIndex+subsetTotal)]
+    gridPos = []
+    xPos = [int(winWidth*0.2), int(winWidth*0.4), int(winWidth*0.6), int(winWidth*0.8)]
+    yPos = [int(winHeight*0.25), int(winHeight*0.45), int(winHeight*0.65), int(winHeight*0.85)]
+    for y in yPos:
+        for x in xPos:
+            gridPos.append((x,y))
+    gridList = []
+    for pos, label in zip(gridPos, gridStim):
+        font = pygame.font.SysFont('Calibri', int(winHeight*0.025), False)
+        labelText = font.render(label, True, (0, 0, 0)) 
+        labelTextbox = labelText.get_rect(center=(pos))
+        gridList.append((label, labelText, labelTextbox))
+    subsetIndex += subsetTotal
+    gridCount += 1
+    clickCount = 0
         
 # Task Loops------------------------------------------
 
-def runIntro(path):
+def runIntro(): # function to run task introduction screen(s)
     global promptText, button
     win.fill(white)
     drawText(promptText['Instructions_Title'],0.5,0.15,0.04,black,True)
     wrapText(promptText['Instructions_Body'],0.5,0.25,0.03,black,False,0.75)
-    button = drawButton('Start Task',0.5,0.8,0.03,white,True,green)
+    button = drawButton(promptText['Start_Button'],0.5,0.8,0.03,white,True,green)
     pygame.display.update()
 
-def runAlert(text, duration):
+def runAlert(text, duration): # function to display alert message
     win.fill(white) 
     drawText(text,0.5,0.5,0.03,black,True)
     pygame.display.update() 
     pygame.time.delay(duration)
 
-def runGrid():
+def runGrid(): # function to display grid screen
     global clickCount, promptText, gridList, button
     button = []
     # create display
@@ -316,24 +314,32 @@ def runGrid():
     # update display
     pygame.display.update()
 
-def runContent():
+def runContent(): # function to display selected content
     global taskInfo, promptText, button
     win.fill(white)
     drawText(taskInfo['activeContent'],0.5,0.45,0.03,black,False)
     button = drawButton(promptText['Continue_Button'],0.5,0.8,0.025,white,True,blue)
     pygame.display.update()
 
-def runError():
+def runEnd(): # function to run task end screen
+    global promptText, button
+    win.fill(white)
+    drawText(promptText['End_Title'],0.5,0.15,0.04,black,True)
+    wrapText(promptText['End_Body'],0.5,0.25,0.03,black,False,0.75)
+    button = drawButton(promptText['End_Button'],0.5,0.8,0.03,white,True,red)
+    pygame.display.update()    
+
+def runError(): # function to display error message
     global errorText, button
     win.fill(white) 
     drawText('( "• ᴖ •) Uh oh!',0.5,0.4,0.04,black,True)
     wrapText(errorText,0.5,0.45,0.028,black,False,0.45)
-    button = drawButton('Exit Task',0.5,0.8,0.03,white,True,red)
+    button = drawButton('Exit',0.5,0.8,0.03,white,True,red)
     pygame.display.update() 
 
 # Data Output---------------------------------------
 
-def createID(path):
+def createID(path): # function to generate unique subject id
     usedid = set()
     try:
         with open(path, mode='r') as file:
@@ -351,7 +357,7 @@ def createID(path):
             updateInfo('subject', newid)
             return newid
 
-def dataRaw(path):
+def dataRaw(path): # function to output raw data
     global taskInfo
     head = [
         "startDate",
@@ -387,14 +393,14 @@ def dataRaw(path):
         writer = csv.writer(file)
         writer.writerow(data)
 
-def createDat():
+def createDat(): # function to generate summary data dictionary
     global stimTotal, subsetTotal, gridTotal, taskInfo, categoryDict, dataDict
     gridTotal = stimTotal // subsetTotal
     dataDict = {}
     dataDict['startDate'] = taskInfo.get('date', '')
     dataDict['startTime'] = taskInfo.get('time', '')
     dataDict['subject'] = taskInfo.get('subject', '')
-    for grid in range(1,gridTotal-1):
+    for grid in range(1,gridTotal+1):
         for category in categoryDict:
             keySubtotal = f"Grid{grid}_Category{category}_Subtotal"
             dataDict[keySubtotal] = 0
@@ -403,20 +409,20 @@ def createDat():
         keyTotal = f"Category{category}_Total"
         dataDict[keyTotal] = 0
 
-def updateDat():
+def updateDat(): # define function to update summary data 
     global taskInfo, dataDict
     activeGrid = taskInfo.get('activeGrid')
     activeCategory = taskInfo.get('activeCategory')
     if activeGrid is not None and activeCategory is not None:
         subtotalKey = f"Grid{activeGrid}_Category{activeCategory}_Subtotal"
         totalKey = f"Category{activeCategory}_Total"
-    if subtotalKey in dataDict:
-        dataDict[subtotalKey] += 1 
-    if totalKey in dataDict:
-        dataDict[totalKey] = sum(value for key, value in dataDict.items() if key.endswith(f"Category{activeCategory}_Subtotal"))
+        if subtotalKey in dataDict:
+            dataDict[subtotalKey] += 1
+        if totalKey in dataDict:
+            dataDict[totalKey] = sum(value for key, value in dataDict.items() if key.endswith(f"Category{activeCategory}_Subtotal"))
     return dataDict
 
-def dataDat(path):
+def dataDat(path): # define function to output summary data
     global dataDict
     head = list(dataDict.keys())
     if not os.path.exists(path):
@@ -446,7 +452,7 @@ createDat()
 running = True
 state = 'intro'
 
-while running:
+while running: # main loop
 
     if state == 'intro': # intro loop
         if error:
@@ -455,7 +461,7 @@ while running:
             if click:
                 if button.collidepoint(clickPos):
                     running = False
-        runIntro(txtFile)
+        runIntro()
         click = handleEvent()
         if click: 
             if button.collidepoint(clickPos):
@@ -490,9 +496,16 @@ while running:
                 clickTime = datetime.now()
                 updateInfo('latencyContent',int((clickTime.timestamp()-startTime.timestamp())*1000))
                 dataRaw(rawFile)
-                updateDat()
+                updateDat() # update running totals
                 state = 'grid'
+    
+    elif state == 'end': # end loop
+        runEnd()
+        click = handleEvent()
+        if click:
+            if button.collidepoint(clickPos):
+                running = False
 
-dataDat(datFile)
+dataDat(datFile) # output summary data
+pygame.quit() # quit pygame
 
-pygame.quit()

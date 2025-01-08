@@ -9,3 +9,6 @@ Grid_Alert,Example Alert: New options will now be made available.
 Grid_Prompt,"Example Prompt: To continue, click an option to read the passage in full."
 Continue_Button,Continue
 End_Alert,Example Alert: This is the end of the task.
+End_Title,Task End
+End_Body,Sample Instructions: Please notify the experimenter that the task has ended.
+End_Button,Exit
